@@ -1,0 +1,297 @@
+{
+  "consultants": [
+    {
+      "id": "c1",
+      "name": "Maria",
+      "role": "Project Manager",
+      "status": "not-applied",
+      "topMatches": [
+        {
+          "id": "v-m1",
+          "title": "Product Manager",
+          "publishedDate": "2025-12-05",
+          "startDate": "2026-01-05",
+          "location": "Stockholm"
+        },
+        {
+          "id": "v-m2",
+          "title": "Product Owner",
+          "publishedDate": "2025-12-10",
+          "startDate": "2026-02-01",
+          "location": "Remote"
+        },
+        {
+          "id": "v-m3",
+          "title": "Program Manager",
+          "publishedDate": "2025-12-15",
+          "startDate": "2026-02-15",
+          "location": "Gothenburg"
+        }
+      ],
+      "assignments": [],
+      "applications": [],
+      "invoices": []
+    },
+
+    {
+      "id": "c2",
+      "name": "Fredrik",
+      "role": "Full-stack Developer",
+      "status": "applied",
+      "topMatches": [
+        {
+          "id": "v-f1",
+          "title": "Full-stack Developer",
+          "publishedDate": "2025-12-08",
+          "startDate": "2026-02-01",
+          "location": "Stockholm"
+        },
+        {
+          "id": "v-f2",
+          "title": "Java Developer",
+          "publishedDate": "2025-12-12",
+          "startDate": "2026-03-01",
+          "location": "Malmö"
+        },
+        {
+          "id": "v-f3",
+          "title": "Senior Developer",
+          "publishedDate": "2025-12-18",
+          "startDate": "2026-02-18",
+          "location": "Remote"
+        }
+      ],
+      "assignments": [],
+      "applications": [
+        {
+          "id": "app-f1",
+          "title": "Senior Full-stack Developer",
+          "result": "Screening",
+          "startDate": "2026-02-01",
+          "location": "Stockholm",
+          "remote": true
+        },
+        {
+          "id": "app-f2",
+          "title": "Java Developer",
+          "result": "Presented to Customer",
+          "startDate": "2026-03-01",
+          "location": "Remote",
+          "remote": true
+        },
+        {
+          "id": "app-f3",
+          "title": "Senior Backend Developer",
+          "result": "Paused process",
+          "startDate": "2026-04-01",
+          "location": "Gothenburg",
+          "remote": false
+        }
+      ],
+      "invoices": []
+    },
+
+    {
+      "id": "c3",
+      "name": "Elin",
+      "role": "Data Engineer",
+      "status": "applied",
+      "skills": ["Python", "AWS", "Azure"],
+      "topMatches": [
+        {
+          "id": "v-e1",
+          "title": "Data Engineer",
+          "publishedDate": "2025-12-03",
+          "startDate": "2026-01-01",
+          "location": "Remote"
+        },
+        {
+          "id": "v-e2",
+          "title": "Analytics Engineer",
+          "publishedDate": "2025-12-10",
+          "startDate": "2026-02-01",
+          "location": "Stockholm"
+        },
+        {
+          "id": "v-e3",
+          "title": "Cloud Data Engineer",
+          "publishedDate": "2025-12-20",
+          "startDate": "2026-03-01",
+          "location": "Malmö"
+        }
+      ],
+      "assignments": [],
+      "applications": [
+        {
+          "id": "app-e1",
+          "title": "Data Engineer",
+          "result": "Showed interest",
+          "startDate": "2026-01-01",
+          "location": "Remote",
+          "remote": true
+        },
+        {
+          "id": "app-e2",
+          "title": "Senior Data Engineer",
+          "result": "No feedback from client",
+          "startDate": "2026-02-01",
+          "location": "Stockholm",
+          "remote": true
+        },
+        {
+          "id": "app-e3",
+          "title": "Cloud Data Engineer",
+          "result": "Interview booked",
+          "startDate": "2026-03-01",
+          "location": "Stockholm",
+          "remote": false
+        }
+      ],
+      "invoices": []
+    },
+
+    {
+      "id": "c4",
+      "name": "Roger",
+      "role": "UX Designer",
+      "status": "on-assignment",
+      "topMatches": [
+        {
+          "id": "v-r1",
+          "title": "UX Designer",
+          "publishedDate": "2025-12-01",
+          "startDate": "2026-01-01",
+          "location": "Stockholm"
+        },
+        {
+          "id": "v-r2",
+          "title": "Product Designer",
+          "publishedDate": "2025-12-07",
+          "startDate": "2026-02-01",
+          "location": "Remote"
+        },
+        {
+          "id": "v-r3",
+          "title": "Service Designer",
+          "publishedDate": "2025-12-14",
+          "startDate": "2026-03-01",
+          "location": "Gothenburg"
+        }
+      ],
+      "assignments": [
+        {
+          "id": "a-r1",
+          "title": "Senior UX Designer",
+          "hourRate": 850,
+          "startDate": "2025-01-01",
+          "endDate": "2025-12-31",
+          "location": "Stockholm",
+          "remote": true
+        }
+      ],
+      "applications": [
+        {
+          "id": "app-r1",
+          "title": "UX Designer",
+          "result": "Showed interest",
+          "startDate": "2026-01-01",
+          "location": "Stockholm",
+          "remote": false
+        },
+        {
+          "id": "app-r2",
+          "title": "Senior UX Designer",
+          "result": "Interview booked",
+          "startDate": "2026-02-01",
+          "location": "Remote",
+          "remote": true
+        },
+        {
+          "id": "app-r3",
+          "title": "Product Designer",
+          "result": "No from Customer",
+          "startDate": "2026-03-01",
+          "location": "Malmö",
+          "remote": false
+        },
+        {
+          "id": "app-r4",
+          "title": "Service Designer",
+          "result": "Presented to Customer",
+          "startDate": "2026-04-01",
+          "location": "Gothenburg",
+          "remote": true
+        },
+        {
+          "id": "app-r5",
+          "title": "UX Lead",
+          "result": "Proposed assignment",
+          "startDate": "2026-05-01",
+          "location": "Stockholm",
+          "remote": true
+        }
+      ],
+      "invoices": [
+        { "id": "inv-r-2025-03", "month": "2025-03", "hours": 120, "amountSEK": 102000 },
+        { "id": "inv-r-2025-04", "month": "2025-04", "hours": 140, "amountSEK": 119000 },
+        { "id": "inv-r-2025-05", "month": "2025-05", "hours": 160, "amountSEK": 136000 },
+        { "id": "inv-r-2025-06", "month": "2025-06", "hours": 150, "amountSEK": 127500 },
+        { "id": "inv-r-2025-07", "month": "2025-07", "hours": 130, "amountSEK": 110500 },
+        { "id": "inv-r-2025-08", "month": "2025-08", "hours": 160, "amountSEK": 136000 },
+        { "id": "inv-r-2025-09", "month": "2025-09", "hours": 155, "amountSEK": 131750 },
+        { "id": "inv-r-2025-10", "month": "2025-10", "hours": 160, "amountSEK": 136000 },
+        { "id": "inv-r-2025-11", "month": "2025-11", "hours": 140, "amountSEK": 119000 },
+        { "id": "inv-r-2025-12", "month": "2025-12", "hours": 120, "amountSEK": 102000 }
+      ]
+    },
+
+    {
+      "id": "c5",
+      "name": "Fatima",
+      "role": "Enterprise Architect",
+      "status": "on-assignment",
+      "topMatches": [
+        {
+          "id": "v-fa1",
+          "title": "Enterprise Architect",
+          "publishedDate": "2025-12-01",
+          "startDate": "2026-01-01",
+          "location": "Stockholm"
+        },
+        {
+          "id": "v-fa2",
+          "title": "Solution Architect",
+          "publishedDate": "2025-12-10",
+          "startDate": "2026-02-01",
+          "location": "Remote"
+        }
+      ],
+      "assignments": [
+        {
+          "id": "a-f1",
+          "title": "Enterprise Architect",
+          "hourRate": 1000,
+          "startDate": "2025-01-01",
+          "endDate": null,
+          "location": "Stockholm",
+          "remote": false
+        }
+      ],
+      "applications": [],
+      "invoices": [
+         { "id": "inv-f-2025-01", "month": "2025-01", "hours": 160, "amountSEK": 160000 },
+        { "id": "inv-f-2025-02", "month": "2025-02", "hours": 150, "amountSEK": 150000 },
+        { "id": "inv-f-2025-03", "month": "2025-03", "hours": 160, "amountSEK": 160000 },
+        { "id": "inv-f-2025-04", "month": "2025-04", "hours": 85, "amountSEK": 85000 },
+        { "id": "inv-f-2025-05", "month": "2025-05", "hours": 155, "amountSEK": 155000 },
+        { "id": "inv-f-2025-06", "month": "2025-06", "hours": 165, "amountSEK": 165000 },
+        { "id": "inv-f-2025-07", "month": "2025-07", "hours": 80, "amountSEK": 80000 },
+        { "id": "inv-f-2025-08", "month": "2025-08", "hours": 160, "amountSEK": 160000 },
+        { "id": "inv-f-2025-09", "month": "2025-09", "hours": 155, "amountSEK": 155000 },
+        { "id": "inv-f-2025-10", "month": "2025-10", "hours": 90, "amountSEK": 90000 },
+        { "id": "inv-f-2025-11", "month": "2025-11", "hours": 160, "amountSEK": 160000 },
+        { "id": "inv-f-2025-12", "month": "2025-12", "hours": 150, "amountSEK": 150000 }
+      ]
+    }
+  ]
+}
