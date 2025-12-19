@@ -5,7 +5,7 @@ export type {
   Consultant, 
   ConsultantStatus, 
   ConsultantsDatabase 
-} from './consultant';
+} from './Consultant';
 
 // Dashboard Sections
 export type { 
@@ -27,4 +27,4 @@ export type {
   EarningsChartData,
   HoursChartData,
 //   OnAssignmentSectionProps
-} from './charts';
+} from './Charts';
