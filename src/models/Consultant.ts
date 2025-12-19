@@ -19,6 +19,6 @@ export interface Consultant {
 export type ConsultantStatus = 'not-applied' | 'applied' | 'on-assignment'| 'on-assignment-with-applications';
 
 // The root of your JSON file
-export interface ConsultantsData {
+export interface ConsultantsDatabase {
   consultants: Consultant[];
 }

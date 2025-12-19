@@ -11,6 +11,10 @@ export interface ChartDataPoint {
 
 export interface EarningsChartData {
   dataPoints: ChartDataPoint[]; 
-  maxValue: number;
-  minValue: number;
-}
+  amountSEK: number;
+  }
+
+export interface HoursChartData {
+  dataPoints: ChartDataPoint[];  
+  amountHours: number;              
+  }
