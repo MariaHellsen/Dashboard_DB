@@ -1,5 +1,5 @@
 
-export const ConsultantsLayout = () => {
+export const ConsultantsListPage = () => {
   return (
     <>
        <div>Consultants list</div> 
