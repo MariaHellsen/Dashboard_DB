@@ -5,7 +5,7 @@ export interface DashboardStatistics {
 }
 
 export interface ChartDataPoint {
-  month: string; // "Jan 25", "Feb 25", etc.
+  month: string; 
   value: number;
 }
 

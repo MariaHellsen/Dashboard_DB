@@ -18,7 +18,7 @@ export interface Consultant {
 // High-level status for the consultant on the platform
 export type ConsultantStatus = 'not-applied' | 'applied' | 'on-assignment'| 'on-assignment-with-applications';
 
-// The root of your JSON file
+// The root of the JSON file
 export interface ConsultantsDatabase {
   consultants: Consultant[];
 }
