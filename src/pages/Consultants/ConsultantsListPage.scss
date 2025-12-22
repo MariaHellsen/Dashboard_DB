@@ -1,0 +1,201 @@
+
+$border-radius: 12px;
+$spacing-unit: 8px;
+
+
+.consultants-page {
+  min-height: 100vh;
+  background-color: #f5f5f5;
+
+  // Loading and error 
+  .loading,
+  .error {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 50vh;
+    font-size: 1.2rem;
+    color: #173a3e;
+  }
+
+  .error {
+    color: #d32f2f;
+  }
+}
+
+.hero-section {
+  position: relative;
+  width: 100%;
+  height: 300px;
+  overflow: hidden;
+  background-color: #173a3e;
+
+  .logo {
+    position: absolute;
+    top: 20px;
+    left: 40px;
+    height: 40px;
+    width: auto;
+    z-index: 10;
+
+    
+    @media (max-width: 768px) {
+      left: 20px;
+      top: 16px;
+    }
+  }
+
+  .hero-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.7;
+  }
+}
+
+
+.content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: $spacing-unit * 8 $spacing-unit * 3;
+
+
+  @media (max-width: 768px) {
+    padding: $spacing-unit * 4 $spacing-unit * 2;
+  }
+}
+
+
+.title {
+  font-size: 2.5rem;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: $spacing-unit * 8;
+  position: relative;
+  color: #173a3e;
+
+ 
+   @media (max-width: 768px) {
+    font-size: 1.75rem;
+  }
+
+  @media (min-width: 769px) and (max-width: 1024px) {
+    font-size: 2rem;
+  }
+}
+
+.consultants-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: $spacing-unit * 3;
+  
+ 
+  @media (max-width: 768px) {
+    gap: $spacing-unit * 2;
+    grid-template-columns: 1fr;
+  }
+}
+
+.consultant-card {
+  background: white;
+  border-radius: $border-radius;
+  padding: $spacing-unit * 3;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  text-align: center;
+
+   &:hover {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+    transform: translateY(-4px);
+  }
+
+ 
+  &.clickable {
+    cursor: pointer;
+
+    &:hover {
+      box-shadow: 0 6px 20px rgba(23, 58, 62, 0.2);
+      transform: translateY(-6px);
+
+          }
+  }
+
+  // Avatar circle
+  &__avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: #173a3e;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 0 auto $spacing-unit * 2;
+  }
+
+  
+  &__name {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: $spacing-unit;
+    color: #173a3e;
+  }
+
+  
+  &__role {
+    color: #173a3e;
+    font-weight: 500;
+    margin-bottom: $spacing-unit * 2;
+    font-size: 0.95rem;
+  }
+
+ 
+  &__status {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: $spacing-unit;
+    padding: $spacing-unit ($spacing-unit * 2);
+    border-radius: $border-radius;
+    font-size: 0.875rem;
+    font-weight: 500;
+    margin-bottom: $spacing-unit * 2;
+
+   
+    
+    &.status-not-applied {
+      background-color: #f5f5f5;
+      color: #757575;
+    }
+
+    &.status-applied {
+      background-color: #ffc474;
+      color: #173a3e;
+    }
+
+    &.status-on-assignment {
+      background-color: #8debd2;
+      color: #173a3e;
+    }
+
+    &.status-on-assignment-with-applications {
+      background-color: #8debd2;
+      color: #173a3e;
+    }
+  }
+
+  }
+
+// Animation 
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
