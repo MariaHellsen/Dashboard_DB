@@ -3,6 +3,8 @@
     {
       "id": "c1",
       "name": "Maria",
+      "surname": "Hellsen",
+      "email": "maria.hellsen@gmail.com",
       "role": "Product Manager",
       "status": "not-applied",
       "topMatches": [
@@ -35,6 +37,8 @@
     {
       "id": "c2",
       "name": "Fredrik",
+      "surname": "Andersson",
+      "email": "fredrik.andersson@gmail.com",
       "role": "Full-stack Developer",
       "status": "applied",
       "topMatches": [
@@ -92,6 +96,8 @@
     {
       "id": "c3",
       "name": "Elin",
+      "surname": "Svensson",
+      "email": "elin.svensson@gmail.com",
       "role": "Data Engineer",
       "status": "applied",
       "skills": ["Python", "AWS", "Azure"],
@@ -149,7 +155,9 @@
     },
     {
       "id": "c4",
-      "name": "Roger",
+      "name": "Milos",
+      "surname": "Jenson",
+      "email": "milos.jenson@gmail.com",
       "role": "UX Designer",
       "status": "on-assignment-with-applications",
       "topMatches": [
@@ -243,7 +251,9 @@
     },
     {
       "id": "c5",
-      "name": "Fatima",
+      "name": "Ava",
+      "surname": "Frost",
+      "email": "ava.frost@gmail.com",
       "role": "Enterprise Architect",
       "status": "on-assignment",
       "topMatches": [
