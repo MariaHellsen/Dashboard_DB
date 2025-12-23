@@ -1,7 +1,6 @@
 export const sidebarColors = {
-  background: '#ffffff',      // Keep white for sidebar background (or use #f4ece3 for warm look)
-  foreground: '#175a5e',      // Friendly Green - main text
-  muted: '#8debd2',           // Clear Turquoise - subtle text
-  accent: '#ffc474',          // Boosting Spark - hover/active items
-  border: '#f4ece3',          // Warm Light - borders
+  background: '#175a5e',      
+  foreground: '#ffffff',      // main text
+  muted: '#ffffff',           
+  accent: '#ffc474',          // hover
 };
