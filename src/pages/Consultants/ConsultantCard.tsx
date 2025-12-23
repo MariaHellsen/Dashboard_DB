@@ -27,7 +27,7 @@ export const ConsultantCard = ({ consultant, onClick }: ConsultantCardProps) => 
   };
 
   // Clickable only for one consultant so far
-  const isClickable = consultant.id === 'c5';
+  const isClickable = consultant.id === 'c4';
 
   return (
     <div
