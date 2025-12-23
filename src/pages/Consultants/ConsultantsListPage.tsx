@@ -38,9 +38,7 @@ export const ConsultantsListPage = () => {
   }, []); 
 
     const handleCardClick = (consultant: Consultant) => {
-      if (consultant.id === 'c4') {
-        navigate(`/dashboard/${consultant.id}`);
-      }
+      navigate(`/dashboard/${consultant.id}`);
     };
 
   if (loading) {

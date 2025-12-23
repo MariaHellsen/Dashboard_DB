@@ -12,6 +12,8 @@ import {
   useMediaQuery,
   useTheme
 } from '@mui/material';
+import { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import { 
   LayoutDashboard, 
   User, 
@@ -53,6 +55,40 @@ interface MobileMenuButtonProps {
 
 // Main sidebar content
 const SidebarContent = () => {
+  const [user, setUser] = useState<{ name?: string; surname?: string; email?: string; avatar?: string } | null>(null);
+  const location = useLocation();
+
+  const consultantId = (() => {
+    const m = location.pathname.match(/\/dashboard\/([^/]+)/);
+    return m ? m[1] : null;
+  })();
+
+  useEffect(() => {
+    if (!consultantId) {
+      setUser(null);
+      return;
+    }
+
+    const fetchUser = async () => {
+      try {
+        const res = await fetch(`http://localhost:3001/consultants/${consultantId}`);
+        if (!res.ok) return;
+        const data = await res.json();
+        setUser(data);
+      } catch (e) {
+        // ignore
+      }
+    };
+    fetchUser();
+  }, [consultantId]);
+
+  const getInitials = (name = '', surname = ''): string => {
+    if (name && surname) return (name[0] + surname[0]).toUpperCase();
+    const parts = (name || '').split(' ');
+    if (parts.length >= 2) return (parts[0][0] + parts[1][0]).toUpperCase();
+    return '';
+  };
+
   return (
     <Box sx={sidebarStyles.container}>
       {/* Logo */}
@@ -99,13 +135,15 @@ const SidebarContent = () => {
 
       {/* User Profile */}
       <Box sx={sidebarStyles.profileBox}>
-        <Avatar sx={sidebarStyles.avatar}>MH</Avatar>
+        <Avatar sx={sidebarStyles.avatar} src={user?.avatar}>
+          {!user?.avatar && getInitials(user?.name ?? '', user?.surname ?? '')}
+        </Avatar>
         <Box sx={sidebarStyles.profileInfo}>
           <Typography sx={sidebarStyles.userName}>
-            Maria Hellsen
+            {user ? (`${user.name || ''} ${user.surname || ''}`.trim() || 'Unknown') : 'Unknown'}
           </Typography>
           <Typography sx={sidebarStyles.userEmail}>
-            maria.hellsen@gmail.com
+            {user?.email ?? 'Unknown'}
           </Typography>
         </Box>
       </Box>
