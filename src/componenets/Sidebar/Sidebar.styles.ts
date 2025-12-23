@@ -8,41 +8,24 @@ export const sidebarStyles = {
     height: '100%',
   },
 
-  // Back button
-  backButton: {
-    display: 'flex',
-    alignItems: 'center',
-    gap: 1,
-    px: 2.5,
-    pt: 2,
-    cursor: 'pointer',
-    color: sidebarColors.muted,
-    transition: 'color 0.2s ease',
-    '&:hover': {
-      color: sidebarColors.accent,
-    },
-  },
-
-  backText: {
-    fontSize: '0.75rem',
-    fontWeight: 400,
-  },
-
-  // Logo section
-  logoBox: {
+   logoBox: {
     px: 2.5,
     pt: 2,
     pb: 2,
   },
+  
+    logoImage: {
+    height: 30,
+    width: 'auto',
+  },
 
-  // Availability section
-  availabilityBox: {
+    availabilityBox: {
     px: 2.5,
     pb: 3,
   },
 
   availabilityQuestion: {
-    color: sidebarColors.muted,
+    color: sidebarColors.foreground,
     fontSize: '0.875rem',
     mb: 1,
   },
@@ -88,7 +71,6 @@ export const sidebarStyles = {
   // Profile section
   profileBox: {
     p: 2,
-    borderTop: `1px solid ${sidebarColors.border}`,
     display: 'flex',
     alignItems: 'center',
     gap: 1.5,
@@ -118,7 +100,7 @@ export const sidebarStyles = {
   },
 
   userEmail: {
-    color: sidebarColors.muted,
+    color: sidebarColors.foreground,
     fontSize: '0.75rem',
     display: 'block',
     overflow: 'hidden',
@@ -160,17 +142,17 @@ export const sidebarStyles = {
     zIndex: 1200,
   }),
 
-  // Hamburger menu button (TOP RIGHT corner now)
+  // Hamburger menu button 
   hamburgerButton: {
     position: 'fixed',
     top: 12,
-    right: 12, // Changed from 'left' to 'right'
+    right: 12, 
     zIndex: 1100,
-    bgcolor: 'background.paper',
+    bgcolor: sidebarColors.background,
     boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1)',
     borderRadius: '8px',
     '&:hover': {
-      bgcolor: 'background.paper',
+      bgcolor: sidebarColors.foreground,
       boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1)',
     },
   },

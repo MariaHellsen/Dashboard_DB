@@ -21,12 +21,11 @@ import {
   Clock, 
   Users, 
   Calendar,
-  ArrowLeft,
   Menu,
   X
 } from 'lucide-react';
 import { sidebarColors } from '../../theme';
-import logo from '../../assets/developersbay-logo.png';
+import logo from '../../assets/logo_full.svg';
 import { sidebarStyles } from './Sidebar.styles';
 
 // Menu items data
@@ -43,14 +42,9 @@ const menuItems = [
 const DRAWER_WIDTH = 224;
 
 // Sidebar types
-interface SidebarContentProps {
-  onBackClick?: () => unknown;
-}
-
 interface SidebarProps {
   mobileOpen?: boolean;
   onMobileClose?: () => unknown;
-  onBackClick?: () => unknown;
 }
 
 interface MobileMenuButtonProps {
@@ -58,20 +52,12 @@ interface MobileMenuButtonProps {
 }
 
 // Main sidebar content
-const SidebarContent = ({ onBackClick }: SidebarContentProps) => {
+const SidebarContent = () => {
   return (
     <Box sx={sidebarStyles.container}>
-      {/* Back Button */}
-      <Box onClick={onBackClick} sx={sidebarStyles.backButton}>
-        <ArrowLeft size={16} />
-        <Typography sx={sidebarStyles.backText}>
-          Back to consultants
-        </Typography>
-      </Box>
-
       {/* Logo */}
       <Box sx={sidebarStyles.logoBox}>
-        <img src={logo} alt="DevelopersBay" style={{ height: 44, width: 'auto' }} />
+        <Box component="img" src={logo} alt="DevelopersBay Logo" sx={sidebarStyles.logoImage} />
       </Box>
 
       {/* Availability Section */}
@@ -92,16 +78,17 @@ const SidebarContent = ({ onBackClick }: SidebarContentProps) => {
         <List disablePadding>
           {menuItems.map((item) => {
             const IconComponent = item.icon;
+            const isActive = item.title === 'Dashboard';
             
             return (
               <ListItem key={item.title} disablePadding>
-                <ListItemButton sx={sidebarStyles.menuButton}>
+                <ListItemButton sx={isActive ? { ...sidebarStyles.menuButton, color: sidebarColors.accent } : sidebarStyles.menuButton}>
                   <ListItemIcon sx={sidebarStyles.menuIcon}>
-                    <IconComponent size={20} color={sidebarColors.foreground} />
+                    <IconComponent size={20} color={isActive ? sidebarColors.accent : sidebarColors.foreground} />
                   </ListItemIcon>
                   <ListItemText 
                     primary={item.title}
-                    primaryTypographyProps={sidebarStyles.menuText}
+                    primaryTypographyProps={isActive ? { ...sidebarStyles.menuText, color: sidebarColors.accent } : sidebarStyles.menuText}
                   />
                 </ListItemButton>
               </ListItem>
@@ -127,7 +114,7 @@ const SidebarContent = ({ onBackClick }: SidebarContentProps) => {
 };
 
 // Main Sidebar Component
-export const Sidebar = ({ mobileOpen = false, onMobileClose, onBackClick }: SidebarProps) => {
+export const Sidebar = ({ mobileOpen = false, onMobileClose }: SidebarProps) => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
 
@@ -146,7 +133,7 @@ export const Sidebar = ({ mobileOpen = false, onMobileClose, onBackClick }: Side
             <X size={20} />
           </IconButton>
         </Box>
-        <SidebarContent onBackClick={onBackClick} />
+        <SidebarContent />
       </Drawer>
     );
   }
@@ -154,7 +141,7 @@ export const Sidebar = ({ mobileOpen = false, onMobileClose, onBackClick }: Side
   // Desktop version - fixed sidebar
   return (
     <Box component="aside" sx={sidebarStyles.desktopSidebar(DRAWER_WIDTH)}>
-      <SidebarContent onBackClick={onBackClick} />
+      <SidebarContent />
     </Box>
   );
 };

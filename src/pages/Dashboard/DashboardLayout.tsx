@@ -1,17 +1,24 @@
 import { Outlet } from "react-router-dom";
-import { Sidebar } from "../../componenets/Sidebar/Sidebar";
+import { useState } from 'react';
+import { Sidebar, MobileMenuButton } from "../../componenets/Sidebar/Sidebar";
 import { NewsFromDevBay } from "../../componenets/NewsFromDevBay";
 import { Availability } from "../../componenets/Availability";
 
 export const DashboardLayout = () => {
+  const [mobileOpen, setMobileOpen] = useState(false);
+
+  const handleToggleMobile = () => setMobileOpen((s) => !s);
+  const handleCloseMobile = () => setMobileOpen(false);
+
   return (
     <>
-    <Sidebar />
-     <main>
+      <MobileMenuButton onClick={handleToggleMobile} />
+      <Sidebar mobileOpen={mobileOpen} onMobileClose={handleCloseMobile} />
+      <main>
         <Outlet />
-     </main>
-    <NewsFromDevBay />
-    <Availability />
+      </main>
+      <NewsFromDevBay />
+      <Availability />
     </>
   );
 };
