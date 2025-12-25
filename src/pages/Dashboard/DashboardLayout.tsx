@@ -1,7 +1,7 @@
 import { Outlet } from "react-router-dom";
 import { useState } from 'react';
 import { Sidebar, MobileMenuButton } from "../../componenets/Sidebar/Sidebar";
-import { NewsFromDevBay } from "../../componenets/NewsFromDevBay";
+import { NewsCard } from "../../componenets/NewsCard/NewsCard";
 import { Availability } from "../../componenets/Availability";
 
 export const DashboardLayout = () => {
@@ -17,7 +17,7 @@ export const DashboardLayout = () => {
       <main>
         <Outlet />
       </main>
-      <NewsFromDevBay />
+      <NewsCard />
       <Availability />
     </>
   );
