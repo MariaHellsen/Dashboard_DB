@@ -58,10 +58,8 @@ const SidebarContent = () => {
   const [user, setUser] = useState<{ name?: string; surname?: string; email?: string; avatar?: string } | null>(null);
   const location = useLocation();
 
-  const consultantId = (() => {
-    const m = location.pathname.match(/\/dashboard\/([^/]+)/);
-    return m ? m[1] : null;
-  })();
+  const consultantId: string | null =
+    location.pathname.match(/\/dashboard\/([^/]+)/)?.[1] ?? null;
 
   useEffect(() => {
     if (!consultantId) {
