@@ -3,7 +3,7 @@ import { Applied } from "./pages/Dashboard/Applied";
 import { NotApplied } from "./pages/Dashboard/NotApplied";
 import { OnAssignmentWithApplications } from "./pages/Dashboard/OnAssignmentWithApplications";
 import { NotFound } from "./pages/NotFound";
-import { DashboardLayout } from "./pages/Dashboard/DashboardLayout";
+import { DashboardLayout } from "./pages/Dashboard/DashboardLayout/DashboardLayout";
 import { OnAssignment} from "./pages/Dashboard/OnAssignment";
 import { ConsultantsListPage } from "./pages/Consultants/ConsultantsListPage";
 
