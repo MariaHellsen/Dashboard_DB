@@ -7,6 +7,7 @@ import type { Invoice } from './dashboardSections';
 export interface Consultant {
   id: string;
   name: string;
+  surname: string;
   role: string;
   status: ConsultantStatus;
   topMatches: TopMatch[];
