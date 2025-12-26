@@ -4,7 +4,7 @@ import { Box, useMediaQuery, useTheme, Typography } from '@mui/material';
 import { dashboardLayoutStyles } from './DashboardLayout.styles';
 import { Sidebar, MobileMenuButton } from "../../../componenets/Sidebar/Sidebar";
 import { NewsCard } from "../../../componenets/NewsCard/NewsCard";
-import { Availability } from "../../../componenets/Availability";
+import { AvailabilityCard } from "../../../componenets/Availability";
 import { useConsultant } from "../../../hooks/useConsultant";
 
 const DRAWER_WIDTH = 224;
@@ -47,7 +47,7 @@ export const DashboardLayout = () => {
 
         {/* Availability Section */}
         <Box>
-          <Availability />
+          <AvailabilityCard />
         </Box>
       </Box>
     </Box>
