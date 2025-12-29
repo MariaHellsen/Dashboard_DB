@@ -5,6 +5,7 @@ import { dashboardLayoutStyles } from './DashboardLayout.styles';
 import { Sidebar, MobileMenuButton } from "../../../componenets/Sidebar/Sidebar";
 import { NewsCard } from "../../../componenets/NewsCard/NewsCard";
 import { AvailabilityCard } from "../../../componenets/Availability";
+import { SearchAssignmentCard } from "../../../componenets/TopMatch/SearchAssignmentCard";
 import { useConsultant } from "../../../hooks/useConsultant";
 
 const DRAWER_WIDTH = 224;
@@ -48,6 +49,10 @@ export const DashboardLayout = () => {
         {/* Availability Section */}
         <Box>
           <AvailabilityCard />
+        </Box>
+        {/* Search Assignment Section*/}
+        <Box sx={{ mt: 2 }}>
+          <SearchAssignmentCard />
         </Box>
       </Box>
     </Box>
