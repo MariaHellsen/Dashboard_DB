@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Card, CardContent, Typography, Box, Button } from '@mui/material';
 import { Clock, Calendar, MapPin } from 'lucide-react';
 import { useLocation } from 'react-router-dom';
@@ -16,7 +16,7 @@ const formatDate = (dateString: string): string => {
   });
 };
 
-export const SearchAssignmentCard: React.FC = () => {
+export const SearchAssignmentCard = () => {
   const [topMatches, setTopMatches] = useState<TopMatch[]>([]);
   const location = useLocation();
 

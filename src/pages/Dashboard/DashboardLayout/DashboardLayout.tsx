@@ -7,6 +7,7 @@ import { NewsCard } from "../../../componenets/NewsCard/NewsCard";
 import { AvailabilityCard } from "../../../componenets/Availability";
 import { SearchAssignmentCard } from "../../../componenets/TopMatch/SearchAssignmentCard";
 import { useConsultant } from "../../../hooks/useConsultant";
+import { AppliedCard } from "../../../componenets/AppliedCard/AppliedCard";
 
 const DRAWER_WIDTH = 224;
 
@@ -53,6 +54,9 @@ export const DashboardLayout = () => {
         {/* Search Assignment Section*/}
         <Box sx={{ mt: 2 }}>
           <SearchAssignmentCard />
+        </Box>
+        <Box sx={{ mt: 2 }}>
+          <AppliedCard />
         </Box>
       </Box>
     </Box>
