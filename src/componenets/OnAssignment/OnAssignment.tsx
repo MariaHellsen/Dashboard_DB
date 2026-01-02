@@ -1,0 +1,138 @@
+import { useEffect, useState } from 'react';
+import { Card, CardContent, Typography, Box, Button } from '@mui/material';
+import { useLocation } from 'react-router-dom';
+import type { Assignment, Invoice } from '../../models/dashboardSections';
+import type { DashboardStatistics, ChartDataPoint } from '../../models/Charts';
+import { onAssignmentCardStyles } from './OnAssignment.styles';
+import { EarningsChart } from './EarningsChart.tsx';
+import { HoursChart } from './HoursChart.tsx';
+
+interface ConsultantData {
+  assignments: Assignment[];
+  invoices: Invoice[];
+}
+
+const formatMonthShort = (dateString: string): string => {
+  const date = new Date(dateString);
+  return date.toLocaleDateString('en-US', { 
+    month: 'short',
+    year: '2-digit',
+  });
+};
+
+const calculateStatistics = (invoices: Invoice[]): DashboardStatistics => {
+  const uniqueMonths = new Set(invoices.map(inv => inv.month)).size;
+  const totalHours = invoices.reduce((sum, inv) => sum + inv.hours, 0);
+  const totalEarnings = invoices.reduce((sum, inv) => sum + inv.amountSEK, 0);
+
+  return {
+    monthsWorked: uniqueMonths,
+    totalHours,
+    totalEarnings,
+  };
+};
+
+const generateChartData = (invoices: Invoice[]): { earnings: ChartDataPoint[]; hours: ChartDataPoint[] } => {
+  const sortedInvoices = [...invoices].sort((a, b) => 
+    new Date(a.month).getTime() - new Date(b.month).getTime()
+  );
+
+  const earnings = sortedInvoices.map(inv => ({
+    month: formatMonthShort(inv.month),
+    value: inv.amountSEK / 1000, // Convert to thousands
+  }));
+
+  const hours = sortedInvoices.map(inv => ({
+    month: formatMonthShort(inv.month),
+    value: inv.hours,
+  }));
+
+  return { earnings, hours };
+};
+
+export const OnAssignmentCard = () => {
+  const [data, setData] = useState<ConsultantData | null>(null);
+  const location = useLocation();
+
+  const consultantId: string | null =
+    location.pathname.match(/\/dashboard\/([^/]+)/)?.[1] ?? null;
+
+  useEffect(() => {
+    if (!consultantId) {
+      setData(null);
+      return;
+    }
+
+    const fetchData = async () => {
+      try {
+        const res = await fetch(`http://localhost:3001/consultants/${consultantId}`);
+        if (!res.ok) return;
+        const consultantData = await res.json();
+        setData({
+          assignments: consultantData.assignments || [],
+          invoices: consultantData.invoices || [],
+        });
+      } catch (e) {
+        // ignore
+      }
+    };
+    fetchData();
+  }, [consultantId]);
+
+  // Don't render the card if there are no assignments
+  if (!data || data.assignments.length === 0) {
+    return null;
+  }
+
+  const statistics = calculateStatistics(data.invoices);
+  const { earnings, hours } = generateChartData(data.invoices);
+
+  return (
+    <Card sx={onAssignmentCardStyles.card}>
+      <CardContent sx={onAssignmentCardStyles.cardContent}>
+        <Typography variant="subtitle1" fontWeight={600} gutterBottom>
+          On Assignment
+        </Typography>
+
+        {/* Stats Row */}
+        <Box sx={onAssignmentCardStyles.statsGrid}>
+          <Box>
+            <Typography variant="h6" fontWeight={700}>
+              {statistics.monthsWorked}
+            </Typography>
+            <Typography variant="caption" color="text.secondary" sx={{ fontSize: 10 }}>
+              Months Worked
+            </Typography>
+          </Box>
+          <Box>
+            <Typography variant="h6" fontWeight={700}>
+              {statistics.totalHours}h
+            </Typography>
+            <Typography variant="caption" color="text.secondary" sx={{ fontSize: 10 }}>
+              Total Hours
+            </Typography>
+          </Box>
+          <Box>
+            <Typography variant="h6" fontWeight={700}>
+              {Math.round(statistics.totalEarnings / 1000)}k{' '}
+              <Typography component="span" variant="caption" fontWeight={400}>
+                SEK
+              </Typography>
+            </Typography>
+            <Typography variant="caption" color="text.secondary" sx={{ fontSize: 10 }}>
+              Invoiced Total
+            </Typography>
+          </Box>
+        </Box>
+
+        {/* Charts */}
+        <EarningsChart data={earnings} />
+        <HoursChart data={hours} />
+
+        <Button variant="outlined" fullWidth sx={onAssignmentCardStyles.button}>
+          View Time Reporting
+        </Button>
+      </CardContent>
+    </Card>
+  );
+};

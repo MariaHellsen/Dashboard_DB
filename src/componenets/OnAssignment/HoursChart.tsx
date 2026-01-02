@@ -1,0 +1,64 @@
+import { Box, Typography, Select, MenuItem, FormControl } from '@mui/material';
+import {
+  BarChart,
+  Bar,
+  XAxis,
+  YAxis,
+  ResponsiveContainer,
+  CartesianGrid,
+  Tooltip,
+} from 'recharts';
+import type { ChartDataPoint } from '../../models/Charts';
+
+interface HoursChartProps {
+  data: ChartDataPoint[];
+}
+
+const DateRangePicker = () => (
+  <FormControl size="small">
+    <Select
+      defaultValue="6m"
+      sx={{ 
+        fontSize: 11, 
+        height: 24,
+        '& .MuiSelect-select': { py: 0.5, px: 1 }
+      }}
+    >
+      <MenuItem value="3m" sx={{ fontSize: 12 }}>Last 3 months</MenuItem>
+      <MenuItem value="6m" sx={{ fontSize: 12 }}>Last 6 months</MenuItem>
+      <MenuItem value="1y" sx={{ fontSize: 12 }}>Last year</MenuItem>
+    </Select>
+  </FormControl>
+);
+
+export const HoursChart = ({ data }: HoursChartProps) => {
+  return (
+    <Box sx={{ ml: -1 }}>
+      <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', mb: 1 }}>
+        <Typography variant="caption" fontWeight={500}>
+          Total Hours
+        </Typography>
+        <DateRangePicker />
+      </Box>
+      <Box sx={{ height: 112 }}>
+        <ResponsiveContainer width="100%" height="100%">
+          <BarChart data={data}>
+            <CartesianGrid strokeDasharray="3 3" stroke="rgba(0,0,0,0.08)" />
+            <XAxis dataKey="month" tick={{ fontSize: 8 }} axisLine={false} tickLine={false} />
+            <YAxis tick={{ fontSize: 8 }} axisLine={false} tickLine={false} width={25} />
+            <Tooltip
+              contentStyle={{
+                backgroundColor: '#fff',
+                border: '1px solid rgba(0,0,0,0.08)',
+                borderRadius: 6,
+                fontSize: 12,
+              }}
+              cursor={{ fill: 'rgba(0,0,0,0.04)' }}
+            />
+            <Bar dataKey="value" fill="#173a3e" radius={[2, 2, 0, 0]} />
+          </BarChart>
+        </ResponsiveContainer>
+      </Box>
+    </Box>
+  );
+};

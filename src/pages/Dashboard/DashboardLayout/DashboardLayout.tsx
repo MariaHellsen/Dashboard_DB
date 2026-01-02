@@ -8,6 +8,7 @@ import { AvailabilityCard } from "../../../componenets/Availability";
 import { SearchAssignmentCard } from "../../../componenets/TopMatch/SearchAssignmentCard";
 import { useConsultant } from "../../../hooks/useConsultant";
 import { AppliedCard } from "../../../componenets/AppliedCard/AppliedCard";
+import { OnAssignmentCard } from "../../../componenets/OnAssignment/OnAssignment";
 
 const DRAWER_WIDTH = 224;
 
@@ -57,6 +58,9 @@ export const DashboardLayout = () => {
         </Box>
         <Box sx={{ mt: 2 }}>
           <AppliedCard />
+        </Box>
+        <Box sx={{ mt: 2 }}>
+          <OnAssignmentCard />
         </Box>
       </Box>
     </Box>
