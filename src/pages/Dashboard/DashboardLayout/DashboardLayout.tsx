@@ -23,44 +23,61 @@ export const DashboardLayout = () => {
 
   return (
     <Box sx={dashboardLayoutStyles.root}>
-      {isMobile && <MobileMenuButton onClick={handleToggleMobile} />}
       <Sidebar mobileOpen={mobileOpen} onMobileClose={handleCloseMobile} />
 
       {/* Main Content Container */}
       <Box component="main" sx={dashboardLayoutStyles.main(DRAWER_WIDTH)}>
-        {/* Header */}
-        <Box sx={dashboardLayoutStyles.headerBox}>
-          <Typography variant="h5" sx={dashboardLayoutStyles.title}>
-            Welcome to your consultant dashboard,{' '}
-            <Typography component="span" sx={dashboardLayoutStyles.name}>
-              {loading ? '...' : `${getFirstName()}!`}
+        {/* Mobile Header with Menu Button */}
+        {isMobile && (
+          <Box sx={dashboardLayoutStyles.mobileHeader}>
+            <MobileMenuButton onClick={handleToggleMobile} />
+            <Typography variant="h5" sx={dashboardLayoutStyles.title}>
+              Welcome, {' '}
+              <Typography component="span" sx={dashboardLayoutStyles.name}>
+                {loading ? '...' : `${getFirstName()}!`}
+              </Typography>
             </Typography>
-          </Typography>
-        </Box>
+          </Box>
+        )}
+
+        {/* Desktop Header */}
+        {!isMobile && (
+          <Box sx={dashboardLayoutStyles.headerBox}>
+            <Typography variant="h5" sx={dashboardLayoutStyles.title}>
+              Welcome to your consultant dashboard,{' '}
+              <Typography component="span" sx={dashboardLayoutStyles.name}>
+                {loading ? '...' : `${getFirstName()}!`}
+              </Typography>
+            </Typography>
+          </Box>
+        )}
 
         {/* Route Content */}
-        <Box sx={dashboardLayoutStyles.routeContent}>
-          <Outlet />
-        </Box>
+        <Box sx={dashboardLayoutStyles.contentWrapper}>
+          <Box sx={dashboardLayoutStyles.routeContent}>
+            <Outlet />
+          </Box>
 
-        {/* News Section - appears below route content */}
-        <Box sx={dashboardLayoutStyles.newsSection}>
-          <NewsCard />
-        </Box>
+          {/* News Section */}
+          <Box sx={dashboardLayoutStyles.newsSection}>
+            <NewsCard />
+          </Box>
 
-        {/* Availability Section */}
-        <Box>
-          <AvailabilityCard />
-        </Box>
-        {/* Search Assignment Section*/}
-        <Box sx={{ mt: 2 }}>
-          <SearchAssignmentCard />
-        </Box>
-        <Box sx={{ mt: 2 }}>
-          <AppliedCard />
-        </Box>
-        <Box sx={{ mt: 2 }}>
-          <OnAssignmentCard />
+          {/* Availability Section */}
+          <Box>
+            <AvailabilityCard />
+          </Box>
+          
+          {/* Search Assignment Section */}
+          <Box sx={{ mt: 2 }}>
+            <SearchAssignmentCard />
+          </Box>
+          <Box sx={{ mt: 2 }}>
+            <AppliedCard />
+          </Box>
+          <Box sx={{ mt: 2 }}>
+            <OnAssignmentCard />
+          </Box>
         </Box>
       </Box>
     </Box>

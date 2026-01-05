@@ -144,16 +144,14 @@ export const sidebarStyles = {
 
   // Hamburger menu button 
   hamburgerButton: {
-    position: 'fixed',
-    top: 12,
-    right: 12, 
-    zIndex: 1100,
     bgcolor: sidebarColors.background,
-    boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1)',
+    boxShadow: '0 2px 4px rgba(0, 0, 0, 0.08)',
     borderRadius: '8px',
+    padding: '8px',
+    minWidth: 'auto',
     '&:hover': {
       bgcolor: sidebarColors.foreground,
-      boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1)',
+      boxShadow: '0 4px 8px rgba(0, 0, 0, 0.12)',
     },
   },
 };

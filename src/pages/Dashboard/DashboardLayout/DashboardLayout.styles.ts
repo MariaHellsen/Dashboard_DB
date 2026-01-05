@@ -10,28 +10,50 @@ export const dashboardLayoutStyles = {
   main: (drawerWidth: number | string) => ({
     flexGrow: 1,
     ml: { xs: 0, md: `${drawerWidth}px` },
-    p: { xs: 2, sm: 3 },
-    pt: { xs: 8, md: 3 },
+    p: { xs: 0, sm: 3 },
+    pt: { xs: 0, md: 3 },
     maxWidth: '100%',
     overflow: 'hidden',
     display: 'flex',
     flexDirection: 'column',
   }) as SxProps<Theme>,
 
+  mobileHeader: {
+    position: 'sticky',
+    top: 0,
+    zIndex: 1000,
+    bgcolor: 'background.paper',
+    boxShadow: '0 1px 3px rgba(0, 0, 0, 0.1)',
+    display: { xs: 'flex', md: 'none' },
+    alignItems: 'center',
+    gap: 2,
+    px: 2,
+    py: 1.5,
+    mb: 0,
+  } as SxProps<Theme>,
+
   headerBox: {
-    mb: 3,
+    mb: { xs: 2, md: 2 },
+    px: { xs: 2, md: 0 },
+    pt: { xs: 2, md: 0 },
   } as SxProps<Theme>,
 
   title: {
     fontWeight: 600,
     color: 'text.primary',
-    fontSize: { xs: '1.1rem', sm: '1.5rem' },
+    fontSize: { xs: '1.25rem', sm: '1.4rem', md: '1.5rem' },
+    lineHeight: 1.3,
   } as SxProps<Theme>,
 
   name: {
     color: '#ffc474',
     fontWeight: 700,
     fontSize: 'inherit',
+  } as SxProps<Theme>,
+
+  contentWrapper: {
+    px: { xs: 2, md: 0 },
+    pb: { xs: 2, md: 0 },
   } as SxProps<Theme>,
 
   routeContent: {
