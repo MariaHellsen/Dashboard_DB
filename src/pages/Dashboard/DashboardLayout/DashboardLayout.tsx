@@ -4,7 +4,7 @@ import { Box, useMediaQuery, useTheme, Typography } from '@mui/material';
 import { dashboardLayoutStyles } from './DashboardLayout.styles';
 import { Sidebar, MobileMenuButton } from "../../../componenets/Sidebar/Sidebar";
 import { NewsCard } from "../../../componenets/NewsCard/NewsCard";
-import { AvailabilityCard } from "../../../componenets/Availability";
+import { AvailabilityCard } from "../../../componenets/Availiability/Availability";
 import { SearchAssignmentCard } from "../../../componenets/TopMatch/SearchAssignmentCard";
 import { useConsultant } from "../../../hooks/useConsultant";
 import { AppliedCard } from "../../../componenets/AppliedCard/AppliedCard";

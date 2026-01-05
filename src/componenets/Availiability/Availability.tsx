@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import { 
   Card, 
   CardContent, 
@@ -11,6 +12,7 @@ import {
   IconButton
 } from '@mui/material';
 import { Info, Calendar } from 'lucide-react';
+import { availabilityStyles } from './Availability.styles';
 
 interface AvailabilityOption {
   id: string;
@@ -19,7 +21,7 @@ interface AvailabilityOption {
   hasInfo?: boolean;
 }
 
-const initialOptions: AvailabilityOption[] = [
+const DEFAULT_OPTIONS: AvailabilityOption[] = [
   { id: 'looking', label: "I'm actively looking for a new assignment", checked: true },
   { id: 'present', label: 'Feel free to present me to clients without asking', checked: true, hasInfo: true },
   { id: 'framework', label: 'Please include my profile in framework contract procurements', checked: true, hasInfo: true },
@@ -27,89 +29,97 @@ const initialOptions: AvailabilityOption[] = [
   { id: 'employment', label: "I'm open for employment", checked: false },
 ];
 
+const DEFAULT_START_DATE = '2026-01-12';
+
 export const AvailabilityCard = () => {
-  const [options, setOptions] = useState(initialOptions);
-  const [startDate, setStartDate] = useState('2026-01-12');
+  // Get consultant ID from URL parameters
+  const { consultantId } = useParams();
+  
+  // Create unique storage keys for this consultant
+  const storageKeyOptions = `availability_options_${consultantId}`;
+  const storageKeyDate = `availability_start_date_${consultantId}`;
+
+    const [options, setOptions] = useState<AvailabilityOption[]>(() => {
+    const saved = localStorage.getItem(storageKeyOptions);
+    return saved ? JSON.parse(saved) : DEFAULT_OPTIONS;
+  });
+
+  const [startDate, setStartDate] = useState(() => {
+    const saved = localStorage.getItem(storageKeyDate);
+    return saved ? JSON.parse(saved) : DEFAULT_START_DATE;
+  });
+
+  
+  useEffect(() => {
+    localStorage.setItem(storageKeyOptions, JSON.stringify(options));
+  }, [options, storageKeyOptions]);
+
+  
+  useEffect(() => {
+    localStorage.setItem(storageKeyDate, JSON.stringify(startDate));
+  }, [startDate, storageKeyDate]);
 
   const toggleOption = (id: string) => {
     setOptions(options.map((opt) => (opt.id === id ? { ...opt, checked: !opt.checked } : opt)));
   };
 
   return (
-    <Card sx={{ height: '100%' }}>
+    <Card sx={availabilityStyles.card}>
       <CardContent>
         <Typography variant="subtitle1" fontWeight={600} gutterBottom>
           Availability
         </Typography>
 
-        <Box sx={{ display: 'flex', flexDirection: 'column', gap: 0.5 }}>
+        <Box sx={availabilityStyles.optionsContainer}>
           {options.map((option) => (
-            <Box key={option.id} sx={{ display: 'flex', alignItems: 'flex-start' }}>
+            <Box key={option.id} sx={availabilityStyles.optionBox}>
               <FormControlLabel
                 control={
                   <Checkbox
                     checked={option.checked}
                     onChange={() => toggleOption(option.id)}
                     size="small"
-                sx={{
-                    color: 'rgba(0, 0, 0, 0.23)', 
-                    '&.Mui-checked': {
-                    color: '#173a3e',
-                  },
-                }}
+                    sx={availabilityStyles.checkbox}
                   />
                 }
                 label={
-                  <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5 }}>
-                    <Typography variant="body2" sx={{ lineHeight: 1.3 }}>
+                  <Box sx={availabilityStyles.labelBox}>
+                    <Typography variant="body2" sx={availabilityStyles.labelText}>
                       {option.label}
                     </Typography>
                     {option.hasInfo && (
                       <Tooltip title="More information">
-                        <IconButton size="small" sx={{ p: 0 }}>
+                        <IconButton size="small" sx={availabilityStyles.infoButton}>
                           <Info size={14} color="#6b7280" />
                         </IconButton>
                       </Tooltip>
                     )}
                   </Box>
                 }
-                sx={{ 
-                  alignItems: 'flex-start', 
-                  m: 0,
-                  '& .MuiFormControlLabel-label': { pt: 0.5 }
-                }}
+                sx={availabilityStyles.formControlLabel}
               />
             </Box>
           ))}
         </Box>
 
-        <Box sx={{ mt: 2, pt: 2, borderTop: 1, borderColor: 'divider' }}>
+        <Box sx={availabilityStyles.dateSection}>
           <Typography variant="body2" color="text.secondary" gutterBottom>
             When are you ready to start a new assignment?
           </Typography>
-          <Typography variant="caption" color="text.secondary" display="block" sx={{ mb: 1 }}>
+          <Typography variant="caption" color="text.secondary" display="block" sx={availabilityStyles.dateCaption}>
             Start date
           </Typography>
-          <Box sx={{ position: 'relative' }}>
+          <Box sx={availabilityStyles.dateFieldContainer}>
             <TextField
               size="small"
               fullWidth
               value={startDate}
               onChange={(e) => setStartDate(e.target.value)}
               InputProps={{
-                sx: { pr: 5, fontSize: 14 },
+                sx: availabilityStyles.dateInput,
               }}
             />
-            <Calendar
-              size={16}
-              style={{
-                position: 'absolute',
-                right: 12,
-                top: '50%',
-                transform: 'translateY(-50%)',
-                color: '#6b7280',
-              }}
-            />
+            <Calendar size={16} style={availabilityStyles.calendarIcon} />
           </Box>
         </Box>
       </CardContent>
