@@ -33,14 +33,14 @@ const DateRangePicker = () => (
 
 export const HoursChart = ({ data }: HoursChartProps) => {
   return (
-    <Box sx={{ ml: -1 }}>
+    <Box>
       <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', mb: 1 }}>
-        <Typography variant="caption" fontWeight={500}>
-          Total Hours
+        <Typography variant="body2" fontWeight={600} sx={{ fontSize: '0.75rem' }}>
+          Hours Tracked
         </Typography>
         <DateRangePicker />
       </Box>
-      <Box sx={{ height: 112 }}>
+      <Box sx={{ height: { xs: 100, sm: 120, lg: 100 }, ml: -2 }}>
         <ResponsiveContainer width="100%" height="100%">
           <BarChart data={data}>
             <CartesianGrid strokeDasharray="3 3" stroke="rgba(0,0,0,0.08)" />

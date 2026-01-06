@@ -94,40 +94,43 @@ export const OnAssignmentCard = () => {
           On Assignment
         </Typography>
 
-        {/* Stats Row */}
+        {/* Stats Grid */}
         <Box sx={onAssignmentCardStyles.statsGrid}>
-          <Box>
-            <Typography variant="h6" fontWeight={700}>
+          <Box sx={onAssignmentCardStyles.statCard}>
+            <Typography sx={onAssignmentCardStyles.statValue}>
               {statistics.monthsWorked}
             </Typography>
-            <Typography variant="caption" color="text.secondary" sx={{ fontSize: 10 }}>
-              Months Worked
+            <Typography sx={onAssignmentCardStyles.statLabel}>
+              Months
             </Typography>
           </Box>
-          <Box>
-            <Typography variant="h6" fontWeight={700}>
+          <Box sx={onAssignmentCardStyles.statCard}>
+            <Typography sx={onAssignmentCardStyles.statValue}>
               {statistics.totalHours}h
             </Typography>
-            <Typography variant="caption" color="text.secondary" sx={{ fontSize: 10 }}>
-              Total Hours
+            <Typography sx={onAssignmentCardStyles.statLabel}>
+              Hours
             </Typography>
           </Box>
-          <Box>
-            <Typography variant="h6" fontWeight={700}>
-              {Math.round(statistics.totalEarnings / 1000)}k{' '}
-              <Typography component="span" variant="caption" fontWeight={400}>
-                SEK
-              </Typography>
+          <Box sx={onAssignmentCardStyles.statCard}>
+            <Typography sx={onAssignmentCardStyles.statValue}>
+              {Math.round(statistics.totalEarnings / 1000)}k
             </Typography>
-            <Typography variant="caption" color="text.secondary" sx={{ fontSize: 10 }}>
-              Invoiced Total
+            <Typography sx={onAssignmentCardStyles.statLabel}>
+              SEK Total
             </Typography>
           </Box>
         </Box>
 
-        {/* Charts */}
-        <EarningsChart data={earnings} />
-        <HoursChart data={hours} />
+        {/* Charts Grid */}
+        <Box sx={onAssignmentCardStyles.chartsContainer}>
+          <Box sx={onAssignmentCardStyles.chartWrapper}>
+            <EarningsChart data={earnings} />
+          </Box>
+          <Box sx={onAssignmentCardStyles.chartWrapper}>
+            <HoursChart data={hours} />
+          </Box>
+        </Box>
 
         <Button variant="outlined" fullWidth sx={onAssignmentCardStyles.button}>
           View Time Reporting

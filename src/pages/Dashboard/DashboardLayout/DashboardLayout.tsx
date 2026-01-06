@@ -63,19 +63,11 @@ export const DashboardLayout = () => {
             <NewsCard />
           </Box>
 
-          {/* Availability Section */}
-          <Box>
+         
+          <Box sx={dashboardLayoutStyles.cardsGrid}>
             <AvailabilityCard />
-          </Box>
-          
-          {/* Search Assignment Section */}
-          <Box sx={{ mt: 2 }}>
             <SearchAssignmentCard />
-          </Box>
-          <Box sx={{ mt: 2 }}>
             <AppliedCard />
-          </Box>
-          <Box sx={{ mt: 2 }}>
             <OnAssignmentCard />
           </Box>
         </Box>

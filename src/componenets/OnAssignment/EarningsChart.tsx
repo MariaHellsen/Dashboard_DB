@@ -33,14 +33,14 @@ const DateRangePicker = () => (
 
 export const EarningsChart = ({ data }: EarningsChartProps) => {
   return (
-    <Box sx={{ flex: 1, pt: 2.5, ml: -1 }}>
+    <Box>
       <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', mb: 1 }}>
-        <Typography variant="caption" fontWeight={500}>
-          Total Earnings
+        <Typography variant="body2" fontWeight={600} sx={{ fontSize: '0.75rem' }}>
+          Earnings Over Time
         </Typography>
         <DateRangePicker />
       </Box>
-      <Box sx={{ height: 96 }}>
+      <Box sx={{ height: { xs: 100, sm: 120, lg: 100 }, ml: -2 }}>
         <ResponsiveContainer width="100%" height="100%">
           <AreaChart data={data}>
             <defs>

@@ -64,6 +64,17 @@ export const dashboardLayoutStyles = {
     mt: 'auto',
     mb: 3,
   } as SxProps<Theme>,
+
+  cardsGrid: {
+    display: 'grid',
+    gridTemplateColumns: {
+      xs: '1fr',
+      md: 'repeat(2, 1fr)',
+      lg: 'repeat(4, 1fr)',
+    },
+    gap: { xs: 2, md: 3 },
+    mb: 3,
+  } as SxProps<Theme>,
 };
 
 export default dashboardLayoutStyles;
