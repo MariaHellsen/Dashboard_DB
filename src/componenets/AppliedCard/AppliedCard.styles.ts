@@ -13,7 +13,7 @@ export const appliedCardStyles = {
   applicationsContainer: {
     display: 'flex',
     flexDirection: 'column',
-    gap: 2,
+    gap: 1.5,
   } as SxProps<Theme>,
 
   // Individual application box
@@ -27,7 +27,7 @@ export const appliedCardStyles = {
     '&:hover': {
       borderColor: 'rgba(23, 58, 62, 0.3)',
       '& .app-title': {
-        color: '#ffc474',
+        color: '#EA9523',
       },
     },
   } as SxProps<Theme>,
@@ -56,7 +56,7 @@ export const appliedCardStyles = {
 
   // Status chip
   statusChip: {
-    bgcolor: '#ffc474',
+    bgcolor: '#FDA732',
     color: '#173a3e',
     fontSize: 11,
     height: 22,

@@ -2,7 +2,7 @@ export const sidebarColors = {
   background: '#173a3e',
   foreground: '#ffffff',
   muted: '#ffffff',
-  accent: '#ffc474',
+  accent: '#FDA732',
 };
 
 export const sidebarStyles = {
@@ -84,7 +84,7 @@ export const sidebarStyles = {
   avatar: {
     width: 36,
     height: 36,
-    bgcolor: sidebarColors.accent,
+    bgcolor: '#FFC474',
     color: sidebarColors.background,
     fontSize: '0.875rem',
     fontWeight: 500,

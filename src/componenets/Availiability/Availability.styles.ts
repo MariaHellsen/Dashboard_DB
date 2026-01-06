@@ -32,6 +32,7 @@ export const availabilityStyles = {
 
   labelText: {
     lineHeight: 1.3,
+    color: 'text.secondary',
   } as SxProps<Theme>,
 
   infoButton: {
@@ -52,13 +53,13 @@ export const availabilityStyles = {
   } as SxProps<Theme>,
 
   dateField: {
-    mt: 1,
+    mt: 2,
     '& .MuiInputLabel-root': {
-      fontSize: '0.875rem',
+      fontSize: '1rem',
       color: 'text.secondary',
     },
     '& .MuiOutlinedInput-root': {
-      fontSize: '0.875rem',
+      fontSize: '0.95rem',
     },
   } as SxProps<Theme>,
 };

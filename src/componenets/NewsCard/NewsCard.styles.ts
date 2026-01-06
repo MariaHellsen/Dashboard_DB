@@ -91,10 +91,10 @@ export const newsStyles = {
     top: '50%',
     transform: 'translateY(-50%)',
     zIndex: 10,
-    bgcolor: 'background.paper',
+    bgcolor: '#ffc474',
     boxShadow: 2,
     width: 32,
     height: 32,
-    '&:hover': { bgcolor: 'background.paper' },
+    '&:hover': { bgcolor: '#ffc474' },
   }),
 };

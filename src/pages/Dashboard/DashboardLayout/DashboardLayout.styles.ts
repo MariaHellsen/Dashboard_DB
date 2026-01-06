@@ -52,7 +52,7 @@ export const dashboardLayoutStyles = {
 
   // User name highlight
   name: {
-    color: '#ffc474',
+    color: '#FDA732',
     fontWeight: 700,
     fontSize: 'inherit',
   } as SxProps<Theme>,

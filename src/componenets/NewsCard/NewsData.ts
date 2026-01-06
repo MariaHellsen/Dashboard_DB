@@ -75,7 +75,7 @@ export const newsItems: NewsItem[] = [
   {
     id: 6,
     badge: 'Benefit',
-    badgeColor: '#173a3e',
+    badgeColor: '#ffc474',
     title: 'Sats',
     subtitle: '12% discount',
     icon: Dumbbell,

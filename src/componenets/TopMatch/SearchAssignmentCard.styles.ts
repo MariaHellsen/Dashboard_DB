@@ -38,7 +38,7 @@ export const searchAssignmentStyles = {
     '&:hover': {
       borderColor: 'rgba(23, 58, 62, 0.3)',
       '& .assignment-title': {
-        color: '#ffc474',
+        color: '#FDA732',
       },
     },
   } as SxProps<Theme>,
@@ -58,7 +58,7 @@ export const searchAssignmentStyles = {
   detailRow: {
     display: 'flex',
     alignItems: 'center',
-    gap: 0.75,
+    gap: 0.5,
     color: 'text.secondary',
   } as SxProps<Theme>,
 
@@ -67,7 +67,7 @@ export const searchAssignmentStyles = {
     borderColor: '#173a3e',
     color: '#173a3e',
     fontWeight: 600,
-    fontSize: '0.875rem',
+    fontSize: '0.8rem',
     py: 1,
     borderRadius: '6px',
     transition: 'all 0.25s ease',
