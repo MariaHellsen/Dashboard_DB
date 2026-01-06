@@ -27,15 +27,12 @@ export const DashboardLayout = () => {
 
       {/* Main Content Container */}
       <Box component="main" sx={dashboardLayoutStyles.main(DRAWER_WIDTH)}>
-        {/* Mobile Header with Menu Button */}
+        {/* Mobile Header with Menu Button - corporate standard */}
         {isMobile && (
           <Box sx={dashboardLayoutStyles.mobileHeader}>
             <MobileMenuButton onClick={handleToggleMobile} />
-            <Typography variant="h5" sx={dashboardLayoutStyles.title}>
-              Welcome, {' '}
-              <Typography component="span" sx={dashboardLayoutStyles.name}>
-                {loading ? '...' : `${getFirstName()}!`}
-              </Typography>
+            <Typography sx={dashboardLayoutStyles.mobileHeaderTitle}>
+              Dashboard
             </Typography>
           </Box>
         )}

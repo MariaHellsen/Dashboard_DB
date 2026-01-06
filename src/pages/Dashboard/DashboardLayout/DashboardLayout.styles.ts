@@ -20,19 +20,43 @@ export const dashboardLayoutStyles = {
     flexDirection: 'column',
   }) as SxProps<Theme>,
 
-  // Mobile header - sticky top bar
+  // Mobile header - sticky top bar (corporate standard)
   mobileHeader: {
     position: 'sticky',
     top: 0,
     zIndex: 1000,
-    bgcolor: 'background.paper',
-    boxShadow: '0 1px 3px rgba(0, 0, 0, 0.1)',
+    bgcolor: '#173a3e',
     display: { xs: 'flex', md: 'none' },
     alignItems: 'center',
-    gap: 2,
-    px: { xs: 2, sm: 3 },
-    py: 1.5,
+    gap: 1.5,
+    px: 2,
+    py: 1,
     mb: 0,
+  } as SxProps<Theme>,
+
+  // Mobile header title
+  mobileHeaderTitle: {
+    color: '#ffffff',
+    fontWeight: 500,
+    fontSize: '1.3rem',
+  } as SxProps<Theme>,
+
+  // Mobile header button - corporate standard
+  mobileHeaderButton: {
+    ml: 'auto',
+    bgcolor: '#FDA732',
+    color: '#173a3e',
+    fontWeight: 600,
+    fontSize: '0.75rem',
+    textTransform: 'uppercase',
+    px: 2,
+    py: 0.5,
+    borderRadius: '4px',
+    boxShadow: 'none',
+    '&:hover': {
+      bgcolor: '#FFC474',
+      boxShadow: 'none',
+    },
   } as SxProps<Theme>,
 
   // Header box - welcome message

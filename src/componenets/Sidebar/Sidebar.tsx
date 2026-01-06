@@ -190,7 +190,7 @@ export const MobileMenuButton = ({ onClick }: MobileMenuButtonProps) => {
 
   return (
     <IconButton onClick={onClick} sx={sidebarStyles.hamburgerButton}>
-      <Menu size={15} />
+      <Menu size={26} strokeWidth={3} style={{ transform: 'scaleY(0.85)' }} />
     </IconButton>
   );
 };

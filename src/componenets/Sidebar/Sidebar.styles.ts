@@ -148,16 +148,12 @@ export const sidebarStyles = {
     zIndex: 1200,
   }),
 
-  // Hamburger menu button 
+  // Hamburger menu button - corporate standard
   hamburgerButton: {
-    bgcolor: sidebarColors.background,
-    boxShadow: '0 2px 4px rgba(0, 0, 0, 0.08)',
-    borderRadius: '8px',
-    padding: '8px',
-    minWidth: 'auto',
+    color: sidebarColors.foreground,
+    p: 0.5,
     '&:hover': {
-      bgcolor: sidebarColors.foreground,
-      boxShadow: '0 4px 8px rgba(0, 0, 0, 0.12)',
+      bgcolor: 'rgba(255, 255, 255, 0.1)',
     },
   },
 };
