@@ -26,9 +26,8 @@ import {
   Menu,
   X
 } from 'lucide-react';
-import { sidebarColors } from '../../theme';
 import logo from '../../assets/logo_full.svg';
-import { sidebarStyles } from './Sidebar.styles';
+import { sidebarStyles, sidebarColors } from './Sidebar.styles';
 
 // Menu items data
 const menuItems = [

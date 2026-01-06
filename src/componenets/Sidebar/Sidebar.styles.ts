@@ -1,4 +1,9 @@
-import { sidebarColors } from '../../theme';
+export const sidebarColors = {
+  background: '#173a3e',
+  foreground: '#ffffff',
+  muted: '#ffffff',
+  accent: '#ffc474',
+};
 
 export const sidebarStyles = {
   // Main container
