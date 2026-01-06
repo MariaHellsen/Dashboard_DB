@@ -218,22 +218,6 @@
           "startDate": "2026-03-01T00:00:00Z",
           "location": "Malmö",
           "remote": false
-        },
-        {
-          "id": "app-r4",
-          "title": "Service Designer",
-          "result": "Presented to Customer",
-          "startDate": "2026-04-01T00:00:00Z",
-          "location": "Gothenburg",
-          "remote": true
-        },
-        {
-          "id": "app-r5",
-          "title": "UX Lead",
-          "result": "Proposed assignment",
-          "startDate": "2026-05-01T00:00:00Z",
-          "location": "Stockholm",
-          "remote": true
         }
       ],
       "invoices": [

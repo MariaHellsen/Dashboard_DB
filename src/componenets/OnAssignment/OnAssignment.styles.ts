@@ -2,6 +2,7 @@ import type { SxProps } from '@mui/system';
 import type { Theme } from '@mui/material/styles';
 
 export const onAssignmentCardStyles = {
+  // Card wrapper
   card: {
     height: '100%',
     display: 'flex',
@@ -9,6 +10,7 @@ export const onAssignmentCardStyles = {
     animation: 'fadeUp 0.5s ease-out 0.2s both',
   } as SxProps<Theme>,
 
+  // Card content
   cardContent: {
     flex: 1,
     display: 'flex',
@@ -17,72 +19,80 @@ export const onAssignmentCardStyles = {
     '&:last-child': { pb: 2 },
   } as SxProps<Theme>,
 
-  statsGrid: {
-    display: 'grid',
-    gridTemplateColumns: { xs: 'repeat(3, 1fr)', sm: 'repeat(3, 1fr)' },
-    gap: { xs: 1, sm: 1.5 },
-    mb: { xs: 2, sm: 2 },
+  // Statistics container
+  statsContainer: {
+    display: 'flex',
+    flexDirection: 'row',
+    gap: 1,
+    mb: 2,
   } as SxProps<Theme>,
 
-  statCard: {
+  // Individual stat box
+  statBox: {
+    flex: 1,
+    minWidth: 0,
     textAlign: 'center',
-    p: { xs: 0.75, sm: 1 },
-    bgcolor: 'rgba(23, 58, 62, 0.04)',
-    borderRadius: '8px',
-    border: '1px solid rgba(23, 58, 62, 0.08)',
-    transition: 'all 0.2s ease',
+    p: 1,
+    borderRadius: 1,
+    border: 1,
+    borderColor: 'divider',
+    transition: 'all 0.25s ease',
     '&:hover': {
-      bgcolor: 'rgba(23, 58, 62, 0.06)',
-      transform: 'translateY(-2px)',
-      boxShadow: '0 4px 12px rgba(23, 58, 62, 0.08)',
+      borderColor: 'rgba(23, 58, 62, 0.3)',
     },
   } as SxProps<Theme>,
 
+  // Stat value text
   statValue: {
-    fontSize: { xs: '0.875rem', sm: '1rem' },
     fontWeight: 700,
     color: '#173a3e',
+    fontSize: '0.95rem',
     mb: 0.25,
+    lineHeight: 1.2,
   } as SxProps<Theme>,
 
+  // Stat label text
   statLabel: {
-    fontSize: { xs: '0.563rem', sm: '0.625rem' },
+    fontSize: '0.7rem',
     color: 'text.secondary',
-    textTransform: 'capitalize',
-    letterSpacing: '0.3px',
-    fontWeight: 600,
+    lineHeight: 1.2,
   } as SxProps<Theme>,
 
+  // Charts container
   chartsContainer: {
+    flex: 1,
     display: 'flex',
     flexDirection: 'column',
-    gap: { xs: 1.5, sm: 2 },
-    mb: { xs: 1.5, sm: 2 },
+    gap: 1.5,
   } as SxProps<Theme>,
 
-  chartWrapper: {
-    bgcolor: 'rgba(0, 0, 0, 0.02)',
-    borderRadius: '8px',
-    p: { xs: 1.5, sm: 1.5 },
-    border: '1px solid rgba(0, 0, 0, 0.05)',
+  // Individual chart box
+  chartBox: {
+    p: 1.5,
+    borderRadius: 1,
+    border: 1,
+    borderColor: 'divider',
+    transition: 'all 0.25s ease',
+    '&:hover': {
+      borderColor: 'rgba(23, 58, 62, 0.3)',
+    },
   } as SxProps<Theme>,
 
+  // Action button
   button: {
-    mt: 'auto',
+    mt: 2,
     borderColor: '#173a3e',
     color: '#173a3e',
     fontWeight: 600,
-    fontSize: '0.813rem',
+    fontSize: '0.875rem',
     py: 1,
     borderRadius: '6px',
     transition: 'all 0.25s ease',
-    textTransform: 'none',
     '&:hover': {
       bgcolor: '#173a3e',
       color: 'white',
       borderColor: '#173a3e',
-      transform: 'translateY(-2px)',
-      boxShadow: '0 4px 12px rgba(23, 58, 62, 0.2)',
+      transform: 'translateY(-1px)',
     },
   } as SxProps<Theme>,
 };

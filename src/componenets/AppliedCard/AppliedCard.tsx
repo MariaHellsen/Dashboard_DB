@@ -63,12 +63,12 @@ export const AppliedCard = () => {
               >
                 {app.title}
               </Typography>
-              <Box sx={appliedCardStyles.detailsRow}>
-                <Box sx={appliedCardStyles.detailItem}>
+              <Box sx={appliedCardStyles.detailsContainer}>
+                <Box sx={appliedCardStyles.detailRow}>
                   <Calendar size={12} />
                   <Typography variant="caption">Starts: {formatDate(app.startDate)}</Typography>
                 </Box>
-                <Box sx={appliedCardStyles.detailItem}>
+                <Box sx={appliedCardStyles.detailRow}>
                   <MapPin size={12} />
                   <Typography variant="caption">
                     {app.remote ? 'Remote' : app.location}

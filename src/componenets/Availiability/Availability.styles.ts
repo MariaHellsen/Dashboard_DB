@@ -51,24 +51,14 @@ export const availabilityStyles = {
     borderColor: 'divider',
   } as SxProps<Theme>,
 
-  dateCaption: {
-    mb: 1,
+  dateField: {
+    mt: 1,
+    '& .MuiInputLabel-root': {
+      fontSize: '0.875rem',
+      color: 'text.secondary',
+    },
+    '& .MuiOutlinedInput-root': {
+      fontSize: '0.875rem',
+    },
   } as SxProps<Theme>,
-
-  dateFieldContainer: {
-    position: 'relative',
-  } as SxProps<Theme>,
-
-  dateInput: {
-    pr: 5,
-    fontSize: 14,
-  } as SxProps<Theme>,
-
-  calendarIcon: {
-    position: 'absolute',
-    right: 12,
-    top: '50%',
-    transform: 'translateY(-50%)',
-    color: '#6b7280',
-  } as React.CSSProperties,
 };

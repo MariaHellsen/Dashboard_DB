@@ -49,12 +49,12 @@ export const AvailabilityCard = () => {
     return saved ? JSON.parse(saved) : DEFAULT_START_DATE;
   });
 
-  
+  // Save options to localStorage
   useEffect(() => {
     localStorage.setItem(storageKeyOptions, JSON.stringify(options));
   }, [options, storageKeyOptions]);
 
-  
+  // Save start date to localStorage
   useEffect(() => {
     localStorage.setItem(storageKeyDate, JSON.stringify(startDate));
   }, [startDate, storageKeyDate]);
@@ -106,21 +106,15 @@ export const AvailabilityCard = () => {
           <Typography variant="body2" color="text.secondary" gutterBottom>
             When are you ready to start a new assignment?
           </Typography>
-          <Typography variant="caption" color="text.secondary" display="block" sx={availabilityStyles.dateCaption}>
-            Start date
-          </Typography>
-          <Box sx={availabilityStyles.dateFieldContainer}>
-            <TextField
-              size="small"
-              fullWidth
-              value={startDate}
-              onChange={(e) => setStartDate(e.target.value)}
-              InputProps={{
-                sx: availabilityStyles.dateInput,
-              }}
-            />
-            <Calendar size={16} style={availabilityStyles.calendarIcon} />
-          </Box>
+          <TextField
+            label="Start date"
+            size="small"
+            fullWidth
+            value={startDate}
+            onChange={(e) => setStartDate(e.target.value)}
+            InputProps={{endAdornment: <Calendar size={18} color="#6b7280" />}}
+            sx={availabilityStyles.dateField}
+          />
         </Box>
       </CardContent>
     </Card>

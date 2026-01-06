@@ -165,7 +165,7 @@ export const Sidebar = ({ mobileOpen = false, onMobileClose }: SidebarProps) => 
       >
         <Box sx={sidebarStyles.closeButtonBox}>
           <IconButton onClick={onMobileClose} sx={sidebarStyles.closeButton}>
-            <X size={20} />
+            <X size={15} />
           </IconButton>
         </Box>
         <SidebarContent />
@@ -173,7 +173,7 @@ export const Sidebar = ({ mobileOpen = false, onMobileClose }: SidebarProps) => 
     );
   }
 
-  // Desktop version - fixed sidebar
+  // Desktop version 
   return (
     <Box component="aside" sx={sidebarStyles.desktopSidebar(DRAWER_WIDTH)}>
       <SidebarContent />
@@ -181,7 +181,7 @@ export const Sidebar = ({ mobileOpen = false, onMobileClose }: SidebarProps) => 
   );
 };
 
-// Mobile hamburger menu button (top right corner)
+// Mobile hamburger menu button 
 export const MobileMenuButton = ({ onClick }: MobileMenuButtonProps) => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
@@ -190,7 +190,7 @@ export const MobileMenuButton = ({ onClick }: MobileMenuButtonProps) => {
 
   return (
     <IconButton onClick={onClick} sx={sidebarStyles.hamburgerButton}>
-      <Menu size={24} />
+      <Menu size={15} />
     </IconButton>
   );
 };

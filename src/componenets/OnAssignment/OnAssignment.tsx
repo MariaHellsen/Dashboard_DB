@@ -79,7 +79,7 @@ export const OnAssignmentCard = () => {
     fetchData();
   }, [consultantId]);
 
-  // Don't render the card if there are no assignments
+  // If there are no assignments
   if (!data || data.assignments.length === 0) {
     return null;
   }
@@ -94,9 +94,8 @@ export const OnAssignmentCard = () => {
           On Assignment
         </Typography>
 
-        {/* Stats Grid */}
-        <Box sx={onAssignmentCardStyles.statsGrid}>
-          <Box sx={onAssignmentCardStyles.statCard}>
+        <Box sx={onAssignmentCardStyles.statsContainer}>
+          <Box sx={onAssignmentCardStyles.statBox}>
             <Typography sx={onAssignmentCardStyles.statValue}>
               {statistics.monthsWorked}
             </Typography>
@@ -104,7 +103,7 @@ export const OnAssignmentCard = () => {
               Months
             </Typography>
           </Box>
-          <Box sx={onAssignmentCardStyles.statCard}>
+          <Box sx={onAssignmentCardStyles.statBox}>
             <Typography sx={onAssignmentCardStyles.statValue}>
               {statistics.totalHours}h
             </Typography>
@@ -112,7 +111,7 @@ export const OnAssignmentCard = () => {
               Hours
             </Typography>
           </Box>
-          <Box sx={onAssignmentCardStyles.statCard}>
+          <Box sx={onAssignmentCardStyles.statBox}>
             <Typography sx={onAssignmentCardStyles.statValue}>
               {Math.round(statistics.totalEarnings / 1000)}k
             </Typography>
@@ -122,12 +121,11 @@ export const OnAssignmentCard = () => {
           </Box>
         </Box>
 
-        {/* Charts Grid */}
         <Box sx={onAssignmentCardStyles.chartsContainer}>
-          <Box sx={onAssignmentCardStyles.chartWrapper}>
+          <Box sx={onAssignmentCardStyles.chartBox}>
             <EarningsChart data={earnings} />
           </Box>
-          <Box sx={onAssignmentCardStyles.chartWrapper}>
+          <Box sx={onAssignmentCardStyles.chartBox}>
             <HoursChart data={hours} />
           </Box>
         </Box>
