@@ -3,7 +3,7 @@ import type { SxProps, Theme } from '@mui/material';
 export const dashboardLayoutStyles = {
   root: {
     minHeight: '100vh',
-    bgcolor: 'background.default',
+    bgcolor: 'rgb(241, 249, 250)',
     display: 'flex',
   } as SxProps<Theme>,
 
