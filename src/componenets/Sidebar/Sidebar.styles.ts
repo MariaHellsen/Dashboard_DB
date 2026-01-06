@@ -54,7 +54,7 @@ export const sidebarStyles = {
 
   menuButton: {
     px: 2.5,
-    py: 1.25,
+    py: 0.8,
     color: sidebarColors.foreground,
     transition: 'color 0.2s ease',
     '&:hover': {
@@ -64,13 +64,13 @@ export const sidebarStyles = {
   },
 
   menuIcon: {
-    minWidth: 36,
+    minWidth: 44,
     transition: 'color 0.2s ease',
   },
 
   menuText: {
-    fontSize: '0.875rem',
-    fontWeight: 700,
+    fontSize: '1rem',
+    fontWeight: 500,
   },
 
   // Profile section
@@ -107,6 +107,7 @@ export const sidebarStyles = {
   userEmail: {
     color: sidebarColors.foreground,
     fontSize: '0.75rem',
+    fontWeight: 300,
     display: 'block',
     overflow: 'hidden',
     textOverflow: 'ellipsis',

@@ -10,7 +10,7 @@ import { useConsultant } from "../../../hooks/useConsultant";
 import { AppliedCard } from "../../../componenets/AppliedCard/AppliedCard";
 import { OnAssignmentCard } from "../../../componenets/OnAssignment/OnAssignment";
 
-const DRAWER_WIDTH = 224;
+const DRAWER_WIDTH = 250;
 
 export const DashboardLayout = () => {
   const [mobileOpen, setMobileOpen] = useState(false);

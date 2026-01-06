@@ -33,7 +33,7 @@ export const dashboardLayoutStyles = {
   } as SxProps<Theme>,
 
   headerBox: {
-    mb: { xs: 2, md: 2 },
+    mb: { xs: 1, md: 1},
     px: { xs: 2, md: 0 },
     pt: { xs: 2, md: 0 },
   } as SxProps<Theme>,
@@ -57,20 +57,20 @@ export const dashboardLayoutStyles = {
   } as SxProps<Theme>,
 
   routeContent: {
-    mb: 4,
+    mb: 2,
   } as SxProps<Theme>,
 
   newsSection: {
     mt: 'auto',
-    mb: 3,
+    mb: 2,
   } as SxProps<Theme>,
 
   cardsGrid: {
     display: 'grid',
     gridTemplateColumns: {
       xs: '1fr',
-      md: 'repeat(2, 1fr)',
-      lg: 'repeat(4, 1fr)',
+      md: 'repeat(auto-fit, minmax(300px, 1fr))',
+      lg: 'repeat(auto-fit, minmax(250px, 1fr))',
     },
     gap: { xs: 2, md: 3 },
     mb: 3,

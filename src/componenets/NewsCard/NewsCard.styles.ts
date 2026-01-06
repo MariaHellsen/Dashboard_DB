@@ -7,6 +7,7 @@ export const newsStyles = {
 
   headerTitle: {
     fontWeight: 600,
+    fontSize: { xs: '1rem', sm: '1.1rem' },
   } as SxProps<Theme>,
 
   containerBox: {

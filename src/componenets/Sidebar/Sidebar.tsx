@@ -40,7 +40,7 @@ const menuItems = [
   { title: 'Contacts', icon: Users },
 ];
 
-const DRAWER_WIDTH = 224;
+const DRAWER_WIDTH = 250;
 
 // Sidebar types
 interface SidebarProps {
