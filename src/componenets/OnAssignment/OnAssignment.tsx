@@ -86,12 +86,16 @@ export const OnAssignmentCard = () => {
 
   const statistics = calculateStatistics(data.invoices);
   const { earnings, hours } = generateChartData(data.invoices);
+  const assignment = data.assignments[0];
 
   return (
     <Card sx={onAssignmentCardStyles.card}>
       <CardContent sx={onAssignmentCardStyles.cardContent}>
-        <Typography variant="subtitle1" fontWeight={600} gutterBottom>
+        <Typography variant="subtitle1" fontWeight={600}>
           On Assignment
+        </Typography>
+        <Typography variant="body2" color="text.secondary" sx={onAssignmentCardStyles.subtitle}>
+          {assignment.client}
         </Typography>
 
         <Box sx={onAssignmentCardStyles.statsContainer}>

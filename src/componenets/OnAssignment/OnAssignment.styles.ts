@@ -19,6 +19,10 @@ export const onAssignmentCardStyles = {
     '&:last-child': { pb: 2 },
   } as SxProps<Theme>,
 
+  subtitle: {
+    mb: 2,
+  } as SxProps<Theme>,
+
   // Statistics container
   statsContainer: {
     display: 'flex',

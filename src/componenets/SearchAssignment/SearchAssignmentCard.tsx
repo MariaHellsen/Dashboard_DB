@@ -2,8 +2,8 @@ import { useEffect, useState } from 'react';
 import { Card, CardContent, Typography, Box, Button } from '@mui/material';
 import { Clock, Calendar, MapPin } from 'lucide-react';
 import { useLocation } from 'react-router-dom';
-import type { TopMatch } from '../../models';
-import { searchAssignmentStyles } from '../SearchAssignment/SearchAssignmentCard.styles.ts';
+import type { TopMatch } from '../../models/index.ts';
+import { searchAssignmentStyles } from './SearchAssignmentCard.styles.ts';
 
 const formatDate = (dateString: string): string => {
   const date = new Date(dateString);

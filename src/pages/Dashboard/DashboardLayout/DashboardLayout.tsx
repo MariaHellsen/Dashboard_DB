@@ -5,7 +5,7 @@ import { dashboardLayoutStyles } from './DashboardLayout.styles';
 import { Sidebar, MobileMenuButton } from "../../../componenets/Sidebar/Sidebar";
 import { NewsCard } from "../../../componenets/NewsCard/NewsCard";
 import { AvailabilityCard } from "../../../componenets/Availiability/Availability";
-import { SearchAssignmentCard } from "../../../componenets/TopMatch/SearchAssignmentCard";
+import { SearchAssignmentCard } from "../../../componenets/SearchAssignment/SearchAssignmentCard";
 import { useConsultant } from "../../../hooks/useConsultant";
 import { AppliedCard } from "../../../componenets/AppliedCard/AppliedCard";
 import { OnAssignmentCard } from "../../../componenets/OnAssignment/OnAssignment";

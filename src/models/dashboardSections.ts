@@ -33,7 +33,7 @@ export type ApplicationResult =
 // On Assignment section
 export interface Assignment {
   id: string;
-  title: string;
+  client: string;
   hourRate: number;
   startDate: string;          
   endDate: string | null;     

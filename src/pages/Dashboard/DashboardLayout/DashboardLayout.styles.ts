@@ -85,9 +85,9 @@ export const dashboardLayoutStyles = {
     display: 'grid',
     gridTemplateColumns: {
       xs: '1fr',
-      sm: 'repeat(2, minmax(0, 1fr))',
-      lg: 'repeat(4, minmax(0, 1fr))',
+      sm: 'repeat(auto-fit, minmax(280px, 1fr))',
     },
+    gridAutoRows: '1fr',
     gap: { xs: 1.5, md: 2 },
     mb: 3,
   } as SxProps<Theme>,
