@@ -41,24 +41,6 @@ export const dashboardLayoutStyles = {
     fontSize: '1.3rem',
   } as SxProps<Theme>,
 
-  // Mobile header button - corporate standard
-  mobileHeaderButton: {
-    ml: 'auto',
-    bgcolor: '#FDA732',
-    color: '#173a3e',
-    fontWeight: 600,
-    fontSize: '0.75rem',
-    textTransform: 'uppercase',
-    px: 2,
-    py: 0.5,
-    borderRadius: '4px',
-    boxShadow: 'none',
-    '&:hover': {
-      bgcolor: '#FFC474',
-      boxShadow: 'none',
-    },
-  } as SxProps<Theme>,
-
   // Header box - welcome message
   headerBox: {
     mb: { xs: 1, md: 1 },
