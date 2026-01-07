@@ -1,12 +1,12 @@
-import { Box, Typography, Button, Container } from '@mui/material';
-import { useNavigate } from 'react-router-dom';
-import { Home } from 'lucide-react';
-import { notFoundStyles } from './NotFound.styles';
+import { Box, Typography, Button, Container } from "@mui/material";
+import { useNavigate } from "react-router-dom";
+import { Home } from "lucide-react";
+import { notFoundStyles } from "./NotFound.styles";
 
 export const NotFound = () => {
   const navigate = useNavigate();
 
-  const handleGoHome = () => navigate('/');
+  const handleGoHome = () => navigate("/");
 
   return (
     <Box sx={notFoundStyles.container}>
@@ -21,7 +21,8 @@ export const NotFound = () => {
           </Typography>
 
           <Typography variant="body1" sx={notFoundStyles.description}>
-            Oops! The page you're looking for doesn't exist or has been moved. Let's get you back on track.
+            Oops! The page you're looking for doesn't exist or has been moved.
+            Let's get you back on track.
           </Typography>
 
           <Button

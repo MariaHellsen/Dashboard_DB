@@ -1,16 +1,16 @@
-import { useEffect, useState } from 'react';
-import { Card, CardContent, Typography, Box, Button } from '@mui/material';
-import { Clock, Calendar, MapPin } from 'lucide-react';
-import { useLocation } from 'react-router-dom';
-import type { TopMatch } from '../../models/index.ts';
-import { searchAssignmentStyles } from './SearchAssignmentCard.styles.ts';
+import { useEffect, useState } from "react";
+import { Card, CardContent, Typography, Box, Button } from "@mui/material";
+import { Clock, Calendar, MapPin } from "lucide-react";
+import { useLocation } from "react-router-dom";
+import type { TopMatch } from "../../models/index.ts";
+import { searchAssignmentStyles } from "./SearchAssignmentCard.styles.ts";
 
 const formatDate = (dateString: string): string => {
   const date = new Date(dateString);
-  return date.toLocaleDateString('en-US', { 
-    year: 'numeric', 
-    month: 'short', 
-    day: 'numeric',
+  return date.toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "short",
+    day: "numeric",
   });
 };
 
@@ -29,7 +29,9 @@ export const SearchAssignmentCard = () => {
 
     const fetchTopMatches = async () => {
       try {
-        const res = await fetch(`http://localhost:3001/consultants/${consultantId}`);
+        const res = await fetch(
+          `http://localhost:3001/consultants/${consultantId}`,
+        );
         if (!res.ok) return;
         const data = await res.json();
         setTopMatches(data.topMatches || []);
@@ -46,7 +48,11 @@ export const SearchAssignmentCard = () => {
         <Typography variant="subtitle1" fontWeight={600}>
           Search Assignment
         </Typography>
-        <Typography variant="body2" color="text.secondary" sx={searchAssignmentStyles.subtitle}>
+        <Typography
+          variant="body2"
+          color="text.secondary"
+          sx={searchAssignmentStyles.subtitle}
+        >
           Top matches
         </Typography>
 
@@ -64,15 +70,21 @@ export const SearchAssignmentCard = () => {
               <Box sx={searchAssignmentStyles.detailsContainer}>
                 <Box sx={searchAssignmentStyles.detailRow}>
                   <Clock size={12} />
-                  <Typography variant="caption">Published: {formatDate(assignment.publishedDate)}</Typography>
+                  <Typography variant="caption">
+                    Published: {formatDate(assignment.publishedDate)}
+                  </Typography>
                 </Box>
                 <Box sx={searchAssignmentStyles.detailRow}>
                   <Calendar size={12} />
-                  <Typography variant="caption">Starts: {formatDate(assignment.startDate)}</Typography>
+                  <Typography variant="caption">
+                    Starts: {formatDate(assignment.startDate)}
+                  </Typography>
                 </Box>
                 <Box sx={searchAssignmentStyles.detailRow}>
                   <MapPin size={12} />
-                  <Typography variant="caption">{assignment.location}</Typography>
+                  <Typography variant="caption">
+                    {assignment.location}
+                  </Typography>
                 </Box>
               </Box>
             </Box>

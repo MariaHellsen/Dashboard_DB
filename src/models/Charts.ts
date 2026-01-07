@@ -5,16 +5,16 @@ export interface DashboardStatistics {
 }
 
 export interface ChartDataPoint {
-  month: string; 
+  month: string;
   value: number;
 }
 
 export interface EarningsChartData {
-  dataPoints: ChartDataPoint[]; 
+  dataPoints: ChartDataPoint[];
   amountSEK: number;
-  }
+}
 
 export interface HoursChartData {
-  dataPoints: ChartDataPoint[];  
-  amountHours: number;              
-  }
+  dataPoints: ChartDataPoint[];
+  amountHours: number;
+}

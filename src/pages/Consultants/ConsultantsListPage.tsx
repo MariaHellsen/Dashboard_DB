@@ -1,15 +1,14 @@
-
-import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import type { Consultant} from '../../models/Consultant';
-import ConsultantCard from './ConsultantCard';
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import type { Consultant } from "../../models/Consultant";
+import ConsultantCard from "./ConsultantCard";
 import logo from "../../assets/logo_full.svg";
 import heroImage from "../../assets/hero-consultants.jpg";
-import './ConsultantsListPage.scss';
+import "./ConsultantsListPage.scss";
 
 export const ConsultantsListPage = () => {
   const navigate = useNavigate();
-  
+
   const [consultants, setConsultants] = useState<Consultant[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -18,28 +17,27 @@ export const ConsultantsListPage = () => {
     const fetchConsultants = async () => {
       try {
         setLoading(true);
-        const response = await fetch('http://localhost:3001/consultants');
-        
+        const response = await fetch("http://localhost:3001/consultants");
+
         if (!response.ok) {
-          throw new Error('Failed to fetch consultants');
+          throw new Error("Failed to fetch consultants");
         }
-        
+
         const data = await response.json();
         setConsultants(data);
-        
       } catch (err) {
-        setError(err instanceof Error ? err.message : 'Something went wrong');
+        setError(err instanceof Error ? err.message : "Something went wrong");
       } finally {
         setLoading(false);
       }
     };
 
     fetchConsultants();
-  }, []); 
+  }, []);
 
-    const handleCardClick = (consultant: Consultant) => {
-      navigate(`/dashboard/${consultant.id}`);
-    };
+  const handleCardClick = (consultant: Consultant) => {
+    navigate(`/dashboard/${consultant.id}`);
+  };
 
   if (loading) {
     return (
@@ -57,17 +55,13 @@ export const ConsultantsListPage = () => {
     );
   }
 
-   return (
+  return (
     <div className="consultants-page">
       <div className="hero-section">
-        <img 
-          src={logo} 
-          alt="DevelopersBay Logo" 
-          className="logo"
-        />
-        <img 
-          src={heroImage} 
-          alt="DevelopersBay Community" 
+        <img src={logo} alt="DevelopersBay Logo" className="logo" />
+        <img
+          src={heroImage}
+          alt="DevelopersBay Community"
           className="hero-image"
         />
       </div>

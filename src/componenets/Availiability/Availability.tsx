@@ -1,18 +1,18 @@
-import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
-import { 
-  Card, 
-  CardContent, 
-  Typography, 
-  FormControlLabel, 
-  Checkbox, 
+import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import {
+  Card,
+  CardContent,
+  Typography,
+  FormControlLabel,
+  Checkbox,
   TextField,
   Box,
   Tooltip,
-  IconButton
-} from '@mui/material';
-import { Info, Calendar } from 'lucide-react';
-import { availabilityStyles } from './Availability.styles';
+  IconButton,
+} from "@mui/material";
+import { Info, Calendar } from "lucide-react";
+import { availabilityStyles } from "./Availability.styles";
 
 interface AvailabilityOption {
   id: string;
@@ -22,24 +22,38 @@ interface AvailabilityOption {
 }
 
 const DEFAULT_OPTIONS: AvailabilityOption[] = [
-  { id: 'looking', label: "I'm actively looking for a new assignment", checked: true },
-  { id: 'present', label: 'Feel free to present me to clients without asking', checked: true, hasInfo: true },
-  { id: 'framework', label: 'Please include my profile in framework contract procurements', checked: true, hasInfo: true },
-  { id: 'ongoing', label: 'I am on an ongoing contract', checked: false },
-  { id: 'employment', label: "I'm open for employment", checked: false },
+  {
+    id: "looking",
+    label: "I'm actively looking for a new assignment",
+    checked: true,
+  },
+  {
+    id: "present",
+    label: "Feel free to present me to clients without asking",
+    checked: true,
+    hasInfo: true,
+  },
+  {
+    id: "framework",
+    label: "Please include my profile in framework contract procurements",
+    checked: true,
+    hasInfo: true,
+  },
+  { id: "ongoing", label: "I am on an ongoing contract", checked: false },
+  { id: "employment", label: "I'm open for employment", checked: false },
 ];
 
-const DEFAULT_START_DATE = '2026-01-12';
+const DEFAULT_START_DATE = "2026-01-12";
 
 export const AvailabilityCard = () => {
   // Get consultant ID from URL parameters
   const { consultantId } = useParams();
-  
+
   // Create unique storage keys for this consultant
   const storageKeyOptions = `availability_options_${consultantId}`;
   const storageKeyDate = `availability_start_date_${consultantId}`;
 
-    const [options, setOptions] = useState<AvailabilityOption[]>(() => {
+  const [options, setOptions] = useState<AvailabilityOption[]>(() => {
     const saved = localStorage.getItem(storageKeyOptions);
     return saved ? JSON.parse(saved) : DEFAULT_OPTIONS;
   });
@@ -60,7 +74,11 @@ export const AvailabilityCard = () => {
   }, [startDate, storageKeyDate]);
 
   const toggleOption = (id: string) => {
-    setOptions(options.map((opt) => (opt.id === id ? { ...opt, checked: !opt.checked } : opt)));
+    setOptions(
+      options.map((opt) =>
+        opt.id === id ? { ...opt, checked: !opt.checked } : opt,
+      ),
+    );
   };
 
   return (
@@ -84,12 +102,18 @@ export const AvailabilityCard = () => {
                 }
                 label={
                   <Box sx={availabilityStyles.labelBox}>
-                    <Typography variant="body2" sx={availabilityStyles.labelText}>
+                    <Typography
+                      variant="body2"
+                      sx={availabilityStyles.labelText}
+                    >
                       {option.label}
                     </Typography>
                     {option.hasInfo && (
                       <Tooltip title="More information">
-                        <IconButton size="small" sx={availabilityStyles.infoButton}>
+                        <IconButton
+                          size="small"
+                          sx={availabilityStyles.infoButton}
+                        >
                           <Info size={14} color="#6b7280" />
                         </IconButton>
                       </Tooltip>
@@ -112,7 +136,9 @@ export const AvailabilityCard = () => {
             fullWidth
             value={startDate}
             onChange={(e) => setStartDate(e.target.value)}
-            InputProps={{endAdornment: <Calendar size={18} color="#6b7280" />}}
+            InputProps={{
+              endAdornment: <Calendar size={18} color="#6b7280" />,
+            }}
             sx={availabilityStyles.dateField}
           />
         </Box>

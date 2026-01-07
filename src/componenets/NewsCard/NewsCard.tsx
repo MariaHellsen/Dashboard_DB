@@ -1,8 +1,16 @@
-import { useRef, useState } from 'react';
-import { Box, Card, CardMedia, CardContent, Typography, Chip, IconButton } from '@mui/material';
-import { Calendar, MapPin, ChevronLeft, ChevronRight } from 'lucide-react';
-import { newsItems } from './NewsData';
-import { newsStyles } from './NewsCard.styles';
+import { useRef, useState } from "react";
+import {
+  Box,
+  Card,
+  CardMedia,
+  CardContent,
+  Typography,
+  Chip,
+  IconButton,
+} from "@mui/material";
+import { Calendar, MapPin, ChevronLeft, ChevronRight } from "lucide-react";
+import { newsItems } from "./NewsData";
+import { newsStyles } from "./NewsCard.styles";
 
 export const NewsCard = () => {
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -17,12 +25,12 @@ export const NewsCard = () => {
     }
   };
 
-  const scroll = (direction: 'left' | 'right') => {
+  const scroll = (direction: "left" | "right") => {
     if (scrollRef.current) {
       const scrollAmount = 300;
       scrollRef.current.scrollBy({
-        left: direction === 'left' ? -scrollAmount : scrollAmount,
-        behavior: 'smooth',
+        left: direction === "left" ? -scrollAmount : scrollAmount,
+        behavior: "smooth",
       });
       setTimeout(checkScroll, 300);
     }
@@ -45,22 +53,18 @@ export const NewsCard = () => {
         {/* Left Scroll Button */}
         {canScrollLeft && (
           <IconButton
-            onClick={() => scroll('left')}
-            sx={newsStyles.scrollButton('left')}
+            onClick={() => scroll("left")}
+            sx={newsStyles.scrollButton("left")}
           >
             <ChevronLeft size={16} />
           </IconButton>
         )}
 
         {/* Cards Scroll Box */}
-        <Box
-          ref={scrollRef}
-          onScroll={checkScroll}
-          sx={newsStyles.scrollBox}
-        >
+        <Box ref={scrollRef} onScroll={checkScroll} sx={newsStyles.scrollBox}>
           {newsItems.map((item) => {
             const IconComponent = item.icon;
-            
+
             return (
               <Card key={item.id} sx={newsStyles.card}>
                 {/* Card Image with Badge */}
@@ -98,7 +102,9 @@ export const NewsCard = () => {
                       </Box>
                       <Box sx={newsStyles.infoItem}>
                         <MapPin size={12} />
-                        <Typography variant="caption">{item.location}</Typography>
+                        <Typography variant="caption">
+                          {item.location}
+                        </Typography>
                       </Box>
                     </Box>
                   )}
@@ -118,8 +124,8 @@ export const NewsCard = () => {
         {/* Right Scroll Button */}
         {canScrollRight && (
           <IconButton
-            onClick={() => scroll('right')}
-            sx={newsStyles.scrollButton('right')}
+            onClick={() => scroll("right")}
+            sx={newsStyles.scrollButton("right")}
           >
             <ChevronRight size={16} />
           </IconButton>

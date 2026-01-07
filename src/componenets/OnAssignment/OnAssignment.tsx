@@ -1,11 +1,11 @@
-import { useEffect, useState } from 'react';
-import { Card, CardContent, Typography, Box, Button } from '@mui/material';
-import { useParams } from 'react-router-dom';
-import type { Assignment, Invoice } from '../../models/dashboardSections';
-import type { DashboardStatistics, ChartDataPoint } from '../../models/Charts';
-import { onAssignmentCardStyles } from './OnAssignment.styles';
-import { EarningsChart } from './EarningsChart.tsx';
-import { HoursChart } from './HoursChart.tsx';
+import { useEffect, useState } from "react";
+import { Card, CardContent, Typography, Box, Button } from "@mui/material";
+import { useParams } from "react-router-dom";
+import type { Assignment, Invoice } from "../../models/dashboardSections";
+import type { DashboardStatistics, ChartDataPoint } from "../../models/Charts";
+import { onAssignmentCardStyles } from "./OnAssignment.styles";
+import { EarningsChart } from "./EarningsChart.tsx";
+import { HoursChart } from "./HoursChart.tsx";
 
 interface ConsultantData {
   assignments: Assignment[];
@@ -14,14 +14,14 @@ interface ConsultantData {
 
 const formatMonthShort = (dateString: string): string => {
   const date = new Date(dateString);
-  return date.toLocaleDateString('en-US', { 
-    month: 'short',
-    year: '2-digit',
+  return date.toLocaleDateString("en-US", {
+    month: "short",
+    year: "2-digit",
   });
 };
 
 const calculateStatistics = (invoices: Invoice[]): DashboardStatistics => {
-  const uniqueMonths = new Set(invoices.map(inv => inv.month)).size;
+  const uniqueMonths = new Set(invoices.map((inv) => inv.month)).size;
   const totalHours = invoices.reduce((sum, inv) => sum + inv.hours, 0);
   const totalEarnings = invoices.reduce((sum, inv) => sum + inv.amountSEK, 0);
 
@@ -32,17 +32,19 @@ const calculateStatistics = (invoices: Invoice[]): DashboardStatistics => {
   };
 };
 
-const generateChartData = (invoices: Invoice[]): { earnings: ChartDataPoint[]; hours: ChartDataPoint[] } => {
-  const sortedInvoices = [...invoices].sort((a, b) => 
-    new Date(a.month).getTime() - new Date(b.month).getTime()
+const generateChartData = (
+  invoices: Invoice[],
+): { earnings: ChartDataPoint[]; hours: ChartDataPoint[] } => {
+  const sortedInvoices = [...invoices].sort(
+    (a, b) => new Date(a.month).getTime() - new Date(b.month).getTime(),
   );
 
-  const earnings = sortedInvoices.map(inv => ({
+  const earnings = sortedInvoices.map((inv) => ({
     month: formatMonthShort(inv.month),
     value: inv.amountSEK / 1000, // Convert to thousands
   }));
 
-  const hours = sortedInvoices.map(inv => ({
+  const hours = sortedInvoices.map((inv) => ({
     month: formatMonthShort(inv.month),
     value: inv.hours,
   }));
@@ -62,12 +64,14 @@ export const OnAssignmentCard = () => {
       }
 
       try {
-        const response = await fetch(`http://localhost:3001/consultants/${consultantId}`);
-        
+        const response = await fetch(
+          `http://localhost:3001/consultants/${consultantId}`,
+        );
+
         if (!response.ok) {
-          throw new Error('Failed to fetch data');
+          throw new Error("Failed to fetch data");
         }
-        
+
         const consultantData = await response.json();
         setData({
           assignments: consultantData.assignments || [],
@@ -96,7 +100,11 @@ export const OnAssignmentCard = () => {
         <Typography variant="subtitle1" fontWeight={600}>
           On Assignment
         </Typography>
-        <Typography variant="body2" color="text.secondary" sx={onAssignmentCardStyles.subtitle}>
+        <Typography
+          variant="body2"
+          color="text.secondary"
+          sx={onAssignmentCardStyles.subtitle}
+        >
           {assignment.client}
         </Typography>
 
@@ -113,9 +121,7 @@ export const OnAssignmentCard = () => {
             <Typography sx={onAssignmentCardStyles.statValue}>
               {statistics.totalHours}h
             </Typography>
-            <Typography sx={onAssignmentCardStyles.statLabel}>
-              Hours
-            </Typography>
+            <Typography sx={onAssignmentCardStyles.statLabel}>Hours</Typography>
           </Box>
           <Box sx={onAssignmentCardStyles.statBox}>
             <Typography sx={onAssignmentCardStyles.statValue}>

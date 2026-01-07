@@ -1,13 +1,11 @@
-
 $border-radius: 12px;
 $spacing-unit: 8px;
-
 
 .consultants-page {
   min-height: 100vh;
   background-color: rgb(241, 249, 250);
 
-  // Loading and error 
+  // Loading and error
   .loading,
   .error {
     display: flex;
@@ -38,7 +36,6 @@ $spacing-unit: 8px;
     width: auto;
     z-index: 10;
 
-    
     @media (max-width: 768px) {
       left: 20px;
       top: 16px;
@@ -53,18 +50,15 @@ $spacing-unit: 8px;
   }
 }
 
-
 .content {
   max-width: 1000px;
   margin: 0 auto;
   padding: $spacing-unit * 4 $spacing-unit * 3 $spacing-unit * 8;
 
-
   @media (max-width: 768px) {
     padding: $spacing-unit * 2 $spacing-unit * 2 $spacing-unit * 4;
   }
 }
-
 
 .title {
   font-size: 2rem;
@@ -72,11 +66,10 @@ $spacing-unit: 8px;
   text-align: left;
   margin-bottom: $spacing-unit * 4;
   padding-left: $spacing-unit * 2;
-  border-left: 4px solid #FDA732;
+  border-left: 4px solid #fda732;
   color: #173a3e;
 
- 
-   @media (max-width: 768px) {
+  @media (max-width: 768px) {
     font-size: 1.75rem;
   }
 
@@ -89,8 +82,7 @@ $spacing-unit: 8px;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: $spacing-unit * 3;
-  
- 
+
   @media (max-width: 768px) {
     gap: $spacing-unit * 2;
     grid-template-columns: 1fr;
@@ -105,20 +97,18 @@ $spacing-unit: 8px;
   transition: all 0.3s ease;
   text-align: center;
 
-   &:hover {
+  &:hover {
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
     transform: translateY(-4px);
   }
 
- 
   &.clickable {
     cursor: pointer;
 
     &:hover {
       box-shadow: 0 6px 20px rgba(23, 58, 62, 0.2);
       transform: translateY(-6px);
-
-          }
+    }
   }
 
   // Avatar circle
@@ -136,7 +126,6 @@ $spacing-unit: 8px;
     margin: 0 auto $spacing-unit * 2;
   }
 
-  
   &__name {
     font-size: 1.25rem;
     font-weight: 700;
@@ -144,7 +133,6 @@ $spacing-unit: 8px;
     color: #173a3e;
   }
 
-  
   &__role {
     color: #173a3e;
     font-weight: 500;
@@ -152,7 +140,6 @@ $spacing-unit: 8px;
     font-size: 0.95rem;
   }
 
- 
   &__status {
     display: inline-flex;
     align-items: center;
@@ -164,8 +151,6 @@ $spacing-unit: 8px;
     font-weight: 500;
     margin-bottom: $spacing-unit * 2;
 
-   
-    
     &.status-not-applied {
       background-color: #f5f5f5;
       color: #757575;
@@ -186,10 +171,9 @@ $spacing-unit: 8px;
       color: #173a3e;
     }
   }
+}
 
-  }
-
-// Animation 
+// Animation
 @keyframes fadeUp {
   from {
     opacity: 0;

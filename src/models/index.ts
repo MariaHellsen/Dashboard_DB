@@ -1,24 +1,24 @@
 // all types
 
 // Consultant & Database
-export type { 
-  Consultant, 
-  ConsultantStatus, 
-  ConsultantsDatabase 
-} from './Consultant';
+export type {
+  Consultant,
+  ConsultantStatus,
+  ConsultantsDatabase,
+} from "./Consultant";
 
 // Dashboard Sections
-export type { 
-  Assignment, 
+export type {
+  Assignment,
   Invoice,
-  Application, 
-  TopMatch, 
-  Location, 
+  Application,
+  TopMatch,
+  Location,
   ApplicationResult,
-//   StatusBadgeConfig,
-//   SearchAssignmentProps,
-//   AppliedSectionProps
-} from './dashboardSections';
+  //   StatusBadgeConfig,
+  //   SearchAssignmentProps,
+  //   AppliedSectionProps
+} from "./dashboardSections";
 
 // Charts & Statistics
 export type {
@@ -26,5 +26,5 @@ export type {
   ChartDataPoint,
   EarningsChartData,
   HoursChartData,
-//   OnAssignmentSectionProps
-} from './Charts';
+  //   OnAssignmentSectionProps
+} from "./Charts";

@@ -1,18 +1,18 @@
-import type { SxProps } from '@mui/system';
-import type { Theme } from '@mui/material/styles';
+import type { SxProps } from "@mui/system";
+import type { Theme } from "@mui/material/styles";
 
 export const appliedCardStyles = {
   // Card wrapper
   card: {
-    height: '100%',
-    animation: 'fadeIn 0.3s ease-out',
-    animationDelay: '0.3s',
+    height: "100%",
+    animation: "fadeIn 0.3s ease-out",
+    animationDelay: "0.3s",
   } as SxProps<Theme>,
 
   // Container for all applications
   applicationsContainer: {
-    display: 'flex',
-    flexDirection: 'column',
+    display: "flex",
+    flexDirection: "column",
     gap: 1.5,
   } as SxProps<Theme>,
 
@@ -21,13 +21,13 @@ export const appliedCardStyles = {
     p: 1.5,
     borderRadius: 1,
     border: 1,
-    borderColor: 'divider',
-    cursor: 'pointer',
-    transition: 'all 0.25s ease',
-    '&:hover': {
-      borderColor: 'rgba(23, 58, 62, 0.3)',
-      '& .app-title': {
-        color: '#EA9523',
+    borderColor: "divider",
+    cursor: "pointer",
+    transition: "all 0.25s ease",
+    "&:hover": {
+      borderColor: "rgba(23, 58, 62, 0.3)",
+      "& .app-title": {
+        color: "#EA9523",
       },
     },
   } as SxProps<Theme>,
@@ -35,29 +35,29 @@ export const appliedCardStyles = {
   // Application title
   applicationTitle: {
     mb: 1,
-    transition: 'color 0.25s ease',
+    transition: "color 0.25s ease",
   } as SxProps<Theme>,
 
   // Details container
   detailsContainer: {
-    display: 'flex',
-    flexDirection: 'column',
+    display: "flex",
+    flexDirection: "column",
     gap: 0.5,
     mb: 1,
-    color: 'text.secondary',
+    color: "text.secondary",
   } as SxProps<Theme>,
 
   // Detail row
   detailRow: {
-    display: 'flex',
-    alignItems: 'center',
+    display: "flex",
+    alignItems: "center",
     gap: 0.5,
   } as SxProps<Theme>,
 
   // Status chip
   statusChip: {
-    bgcolor: '#FDA732',
-    color: '#173a3e',
+    bgcolor: "#FDA732",
+    color: "#173a3e",
     fontSize: 11,
     height: 22,
     fontWeight: 500,
