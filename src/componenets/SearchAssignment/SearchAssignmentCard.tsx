@@ -1,44 +1,44 @@
-import { useEffect, useState } from "react";
-import { Card, CardContent, Typography, Box, Button } from "@mui/material";
-import { Clock, Calendar, MapPin } from "lucide-react";
-import { useLocation } from "react-router-dom";
-import type { TopMatch } from "../../models/index.ts";
-import { searchAssignmentStyles } from "./SearchAssignmentCard.styles.ts";
+import { useEffect, useState } from 'react';
+import { Card, CardContent, Typography, Box, Button } from '@mui/material';
+import { Clock, Calendar, MapPin } from 'lucide-react';
+import { useParams } from 'react-router-dom';
+import type { TopMatch } from '../../models/index.ts';
+import { searchAssignmentStyles } from './SearchAssignmentCard.styles.ts';
 
 const formatDate = (dateString: string): string => {
   const date = new Date(dateString);
-  return date.toLocaleDateString("en-US", {
-    year: "numeric",
-    month: "short",
-    day: "numeric",
+  return date.toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'short',
+    day: 'numeric',
   });
 };
 
 export const SearchAssignmentCard = () => {
   const [topMatches, setTopMatches] = useState<TopMatch[]>([]);
-  const location = useLocation();
-
-  const consultantId: string | null =
-    location.pathname.match(/\/dashboard\/([^/]+)/)?.[1] ?? null;
+  const { consultantId } = useParams();
 
   useEffect(() => {
-    if (!consultantId) {
-      setTopMatches([]);
-      return;
-    }
-
     const fetchTopMatches = async () => {
+      if (!consultantId) {
+        setTopMatches([]);
+        return;
+      }
+
       try {
-        const res = await fetch(
-          `http://localhost:3001/consultants/${consultantId}`,
-        );
-        if (!res.ok) return;
-        const data = await res.json();
+        const response = await fetch(`http://localhost:3001/consultants/${consultantId}`);
+
+        if (!response.ok) {
+          throw new Error('Failed to fetch top matches');
+        }
+
+        const data = await response.json();
         setTopMatches(data.topMatches || []);
-      } catch (e) {
-        // ignore
+      } catch (err) {
+        setTopMatches([]);
       }
     };
+
     fetchTopMatches();
   }, [consultantId]);
 
@@ -48,11 +48,7 @@ export const SearchAssignmentCard = () => {
         <Typography variant="subtitle1" fontWeight={600}>
           Search Assignment
         </Typography>
-        <Typography
-          variant="body2"
-          color="text.secondary"
-          sx={searchAssignmentStyles.subtitle}
-        >
+        <Typography variant="body2" color="text.secondary" sx={searchAssignmentStyles.subtitle}>
           Top matches
         </Typography>
 
@@ -82,9 +78,7 @@ export const SearchAssignmentCard = () => {
                 </Box>
                 <Box sx={searchAssignmentStyles.detailRow}>
                   <MapPin size={12} />
-                  <Typography variant="caption">
-                    {assignment.location}
-                  </Typography>
+                  <Typography variant="caption">{assignment.location}</Typography>
                 </Box>
               </Box>
             </Box>
