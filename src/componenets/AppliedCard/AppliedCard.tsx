@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Card, CardContent, Typography, Box, Chip } from '@mui/material';
 import { Calendar, MapPin } from 'lucide-react';
-import { useLocation } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import type { Application } from '../../models';
 import { appliedCardStyles } from './AppliedCard.styles';
 
@@ -16,27 +16,29 @@ const formatDate = (dateString: string): string => {
 
 export const AppliedCard = () => {
   const [applications, setApplications] = useState<Application[]>([]);
-  const location = useLocation();
-
-  const consultantId: string | null =
-    location.pathname.match(/\/dashboard\/([^/]+)/)?.[1] ?? null;
+  const { consultantId } = useParams();
 
   useEffect(() => {
-    if (!consultantId) {
-      setApplications([]);
-      return;
-    }
-
     const fetchApplications = async () => {
+      if (!consultantId) {
+        setApplications([]);
+        return;
+      }
+
       try {
-        const res = await fetch(`http://localhost:3001/consultants/${consultantId}`);
-        if (!res.ok) return;
-        const data = await res.json();
+        const response = await fetch(`http://localhost:3001/consultants/${consultantId}`);
+        
+        if (!response.ok) {
+          throw new Error('Failed to fetch applications');
+        }
+        
+        const data = await response.json();
         setApplications(data.applications || []);
-      } catch (e) {
-        // ignore
+      } catch (err) {
+        setApplications([]);
       }
     };
+
     fetchApplications();
   }, [consultantId]);
 

@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Card, CardContent, Typography, Box, Button } from '@mui/material';
 import { Clock, Calendar, MapPin } from 'lucide-react';
-import { useLocation } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import type { TopMatch } from '../../models';
 import { searchAssignmentStyles } from '../SearchAssignment/SearchAssignmentCard.styles.ts';
 
@@ -16,27 +16,29 @@ const formatDate = (dateString: string): string => {
 
 export const SearchAssignmentCard = () => {
   const [topMatches, setTopMatches] = useState<TopMatch[]>([]);
-  const location = useLocation();
-
-  const consultantId: string | null =
-    location.pathname.match(/\/dashboard\/([^/]+)/)?.[1] ?? null;
+  const { consultantId } = useParams();
 
   useEffect(() => {
-    if (!consultantId) {
-      setTopMatches([]);
-      return;
-    }
-
     const fetchTopMatches = async () => {
+      if (!consultantId) {
+        setTopMatches([]);
+        return;
+      }
+
       try {
-        const res = await fetch(`http://localhost:3001/consultants/${consultantId}`);
-        if (!res.ok) return;
-        const data = await res.json();
+        const response = await fetch(`http://localhost:3001/consultants/${consultantId}`);
+        
+        if (!response.ok) {
+          throw new Error('Failed to fetch top matches');
+        }
+        
+        const data = await response.json();
         setTopMatches(data.topMatches || []);
-      } catch (e) {
-        // ignore
+      } catch (err) {
+        setTopMatches([]);
       }
     };
+
     fetchTopMatches();
   }, [consultantId]);
 

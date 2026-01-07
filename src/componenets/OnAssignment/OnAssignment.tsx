@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Card, CardContent, Typography, Box, Button } from '@mui/material';
-import { useLocation } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import type { Assignment, Invoice } from '../../models/dashboardSections';
 import type { DashboardStatistics, ChartDataPoint } from '../../models/Charts';
 import { onAssignmentCardStyles } from './OnAssignment.styles';
@@ -52,30 +52,32 @@ const generateChartData = (invoices: Invoice[]): { earnings: ChartDataPoint[]; h
 
 export const OnAssignmentCard = () => {
   const [data, setData] = useState<ConsultantData | null>(null);
-  const location = useLocation();
-
-  const consultantId: string | null =
-    location.pathname.match(/\/dashboard\/([^/]+)/)?.[1] ?? null;
+  const { consultantId } = useParams();
 
   useEffect(() => {
-    if (!consultantId) {
-      setData(null);
-      return;
-    }
-
     const fetchData = async () => {
+      if (!consultantId) {
+        setData(null);
+        return;
+      }
+
       try {
-        const res = await fetch(`http://localhost:3001/consultants/${consultantId}`);
-        if (!res.ok) return;
-        const consultantData = await res.json();
+        const response = await fetch(`http://localhost:3001/consultants/${consultantId}`);
+        
+        if (!response.ok) {
+          throw new Error('Failed to fetch data');
+        }
+        
+        const consultantData = await response.json();
         setData({
           assignments: consultantData.assignments || [],
           invoices: consultantData.invoices || [],
         });
-      } catch (e) {
-        // ignore
+      } catch (err) {
+        setData(null);
       }
     };
+
     fetchData();
   }, [consultantId]);
 

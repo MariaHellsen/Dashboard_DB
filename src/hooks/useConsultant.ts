@@ -1,33 +1,31 @@
 import { useState, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import type { Consultant } from '../models/Consultant';
 
 export const useConsultant = () => {
   const [consultant, setConsultant] = useState<Consultant | null>(null);
   const [loading, setLoading] = useState(true);
-  const location = useLocation();
-
-  const consultantId: string | null =
-    location.pathname.match(/\/dashboard\/([^/]+)/)?.[1] ?? null;
+  const { consultantId } = useParams();
 
   useEffect(() => {
-    if (!consultantId) {
-      setConsultant(null);
-      setLoading(false);
-      return;
-    }
-
     const fetchConsultant = async () => {
+      if (!consultantId) {
+        setConsultant(null);
+        setLoading(false);
+        return;
+      }
+
       try {
-        const res = await fetch(`http://localhost:3001/consultants/${consultantId}`);
-        if (!res.ok) {
-          setLoading(false);
-          return;
+        const response = await fetch(`http://localhost:3001/consultants/${consultantId}`);
+        
+        if (!response.ok) {
+          throw new Error('Failed to fetch consultant');
         }
-        const data: Consultant = await res.json();
+        
+        const data: Consultant = await response.json();
         setConsultant(data);
-      } catch (e) {
-        console.error('Failed to fetch consultant:', e);
+      } catch (err) {
+        console.error('Failed to fetch consultant:', err);
       } finally {
         setLoading(false);
       }
