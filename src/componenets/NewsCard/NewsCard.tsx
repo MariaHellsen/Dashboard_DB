@@ -55,6 +55,7 @@ export const NewsCard = () => {
           <IconButton
             onClick={() => scroll("left")}
             sx={newsStyles.scrollButton("left")}
+            aria-label="Scroll left"
           >
             <ChevronLeft size={16} />
           </IconButton>
@@ -126,6 +127,7 @@ export const NewsCard = () => {
           <IconButton
             onClick={() => scroll("right")}
             sx={newsStyles.scrollButton("right")}
+            aria-label="Scroll right"
           >
             <ChevronRight size={16} />
           </IconButton>

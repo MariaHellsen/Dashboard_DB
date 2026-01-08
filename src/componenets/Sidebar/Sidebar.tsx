@@ -11,9 +11,9 @@ import {
   IconButton,
   useMediaQuery,
   useTheme,
-} from "@mui/material";
-import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+} from '@mui/material';
+import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import {
   LayoutDashboard,
   User,
@@ -25,19 +25,19 @@ import {
   Calendar,
   Menu,
   X,
-} from "lucide-react";
-import logo from "../../assets/logo_full.svg";
-import { sidebarStyles, sidebarColors } from "./Sidebar.styles";
+} from 'lucide-react';
+import logo from '../../assets/logo_full.svg';
+import { sidebarStyles, sidebarColors } from './Sidebar.styles';
 
 // Menu items
 const menuItems = [
-  { title: "Dashboard", icon: LayoutDashboard },
-  { title: "My Profile", icon: User },
-  { title: "My CVs", icon: FileText },
-  { title: "Assignments", icon: Briefcase },
-  { title: "Reviews", icon: Star },
-  { title: "Time reporting", icon: Clock },
-  { title: "Contacts", icon: Users },
+  { title: 'Dashboard', icon: LayoutDashboard },
+  { title: 'My Profile', icon: User },
+  { title: 'My CVs', icon: FileText },
+  { title: 'Assignments', icon: Briefcase },
+  { title: 'Reviews', icon: Star },
+  { title: 'Time reporting', icon: Clock },
+  { title: 'Contacts', icon: Users },
 ];
 
 const DRAWER_WIDTH = 250;
@@ -70,12 +70,10 @@ const SidebarContent = () => {
       }
 
       try {
-        const response = await fetch(
-          `http://localhost:3001/consultants/${consultantId}`,
-        );
+        const response = await fetch(`http://localhost:3001/consultants/${consultantId}`);
 
         if (!response.ok) {
-          throw new Error("Failed to fetch user");
+          throw new Error('Failed to fetch user');
         }
 
         const data = await response.json();
@@ -89,25 +87,18 @@ const SidebarContent = () => {
   }, [consultantId]);
 
   const getInitials = (name: string): string => {
-    const [first, last] = name.split(" ");
-    return (first[0] + (last?.[0] ?? "")).toUpperCase();
+    const [first, last] = name.split(' ');
+    return (first[0] + (last?.[0] ?? '')).toUpperCase();
   };
 
   return (
     <Box sx={sidebarStyles.container}>
       <Box sx={sidebarStyles.logoBox}>
-        <Box
-          component="img"
-          src={logo}
-          alt="DevelopersBay Logo"
-          sx={sidebarStyles.logoImage}
-        />
+        <Box component="img" src={logo} alt="DevelopersBay Logo" sx={sidebarStyles.logoImage} />
       </Box>
 
       <Box sx={sidebarStyles.availabilityBox}>
-        <Typography sx={sidebarStyles.availabilityQuestion}>
-          When are you available?
-        </Typography>
+        <Typography sx={sidebarStyles.availabilityQuestion}>When are you available?</Typography>
         <Box sx={sidebarStyles.dateContainer}>
           <Typography sx={sidebarStyles.dateText}>yyyy-mm-dd</Typography>
           <Calendar size={16} color={sidebarColors.foreground} />
@@ -118,7 +109,7 @@ const SidebarContent = () => {
         <List disablePadding>
           {menuItems.map((item) => {
             const IconComponent = item.icon;
-            const isActive = item.title === "Dashboard";
+            const isActive = item.title === 'Dashboard';
 
             return (
               <ListItem key={item.title} disablePadding>
@@ -135,11 +126,7 @@ const SidebarContent = () => {
                   <ListItemIcon sx={sidebarStyles.menuIcon}>
                     <IconComponent
                       size={20}
-                      color={
-                        isActive
-                          ? sidebarColors.accent
-                          : sidebarColors.foreground
-                      }
+                      color={isActive ? sidebarColors.accent : sidebarColors.foreground}
                     />
                   </ListItemIcon>
                   <ListItemText
@@ -162,18 +149,13 @@ const SidebarContent = () => {
 
       <Box sx={sidebarStyles.profileBox}>
         <Avatar sx={sidebarStyles.avatar} src={user?.avatar}>
-          {!user?.avatar &&
-            getInitials(`${user?.name ?? ""} ${user?.surname ?? ""}`)}
+          {!user?.avatar && getInitials(`${user?.name ?? ''} ${user?.surname ?? ''}`)}
         </Avatar>
         <Box sx={sidebarStyles.profileInfo}>
           <Typography sx={sidebarStyles.userName}>
-            {user
-              ? `${user.name || ""} ${user.surname || ""}`.trim() || "Unknown"
-              : "Unknown"}
+            {user ? `${user.name || ''} ${user.surname || ''}`.trim() || 'Unknown' : 'Unknown'}
           </Typography>
-          <Typography sx={sidebarStyles.userEmail}>
-            {user?.email ?? "Unknown"}
-          </Typography>
+          <Typography sx={sidebarStyles.userEmail}>{user?.email ?? 'Unknown'}</Typography>
         </Box>
       </Box>
     </Box>
@@ -181,12 +163,9 @@ const SidebarContent = () => {
 };
 
 // Sidebar component
-export const Sidebar = ({
-  mobileOpen = false,
-  onMobileClose,
-}: SidebarProps) => {
+export const Sidebar = ({ mobileOpen = false, onMobileClose }: SidebarProps) => {
   const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("md"));
+  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
 
   // Mobile version
   if (isMobile) {
@@ -199,7 +178,11 @@ export const Sidebar = ({
         sx={sidebarStyles.drawer(DRAWER_WIDTH)}
       >
         <Box sx={sidebarStyles.closeButtonBox}>
-          <IconButton onClick={onMobileClose} sx={sidebarStyles.closeButton}>
+          <IconButton
+            onClick={onMobileClose}
+            sx={sidebarStyles.closeButton}
+            aria-label="Close menu"
+          >
             <X size={15} />
           </IconButton>
         </Box>
@@ -219,13 +202,13 @@ export const Sidebar = ({
 // Mobile hamburger menu button
 export const MobileMenuButton = ({ onClick }: MobileMenuButtonProps) => {
   const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("md"));
+  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
 
   if (!isMobile) return null;
 
   return (
-    <IconButton onClick={onClick} sx={sidebarStyles.hamburgerButton}>
-      <Menu size={26} strokeWidth={3} style={{ transform: "scaleY(0.85)" }} />
+    <IconButton onClick={onClick} sx={sidebarStyles.hamburgerButton} aria-label="Open menu">
+      <Menu size={26} strokeWidth={3} style={{ transform: 'scaleY(0.85)' }} />
     </IconButton>
   );
 };
