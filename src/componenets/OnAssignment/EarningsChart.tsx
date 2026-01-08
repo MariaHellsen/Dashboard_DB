@@ -23,6 +23,12 @@ const DateRangePicker = () => (
         fontSize: 11,
         height: 24,
         '& .MuiSelect-select': { py: 0.5, px: 1 },
+        '& .MuiOutlinedInput-notchedOutline': {
+          borderColor: 'divider',
+        },
+        '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
+          borderColor: '#173a3e',
+        },
       }}
     >
       <MenuItem value="3m" sx={{ fontSize: 12 }}>
