@@ -1,40 +1,30 @@
-import type { Consultant, ConsultantStatus } from "../../models/Consultant";
+import type { Consultant, ConsultantStatus } from '../../models/Consultant';
 
 interface ConsultantCardProps {
   consultant: Consultant;
   onClick: () => void;
 }
 
-export const ConsultantCard = ({
-  consultant,
-  onClick,
-}: ConsultantCardProps) => {
+export const ConsultantCard = ({ consultant, onClick }: ConsultantCardProps) => {
   const getInitials = (name: string): string => {
-    const [first, last] = name.split(" ");
-    return (first[0] + (last?.[0] ?? "")).toUpperCase();
+    const [first, last] = name.split(' ');
+    return (first[0] + (last?.[0] ?? '')).toUpperCase();
   };
 
   const getStatusText = (status: ConsultantStatus): string => {
     const statusMap: Record<ConsultantStatus, string> = {
-      "not-applied": "Not Applied",
-      applied: "Applied",
-      "on-assignment": "On Assignment",
-      "on-assignment-with-applications": "On Assignment",
+      'not-applied': 'Not Applied',
+      applied: 'Applied',
+      'on-assignment': 'On Assignment',
+      'on-assignment-with-applications': 'On Assignment',
     };
     return statusMap[status];
   };
 
-  // Clickable only for one consultant so far
-  const isClickable = consultant.id === "c4";
-
   return (
-    <div
-      className={`consultant-card ${isClickable ? "clickable" : ""}`}
-      onClick={onClick}
-    >
-      {/* Initials-change to photo later */}
+    <div className="consultant-card clickable" onClick={onClick}>
       <div className="consultant-card__avatar">
-        {getInitials(consultant.name)}
+        {getInitials(`${consultant.name} ${consultant.surname}`)}
       </div>
 
       <h3 className="consultant-card__name">{consultant.name}</h3>
