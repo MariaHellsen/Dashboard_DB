@@ -1,16 +1,8 @@
-import { useRef, useState } from "react";
-import {
-  Box,
-  Card,
-  CardMedia,
-  CardContent,
-  Typography,
-  Chip,
-  IconButton,
-} from "@mui/material";
-import { Calendar, MapPin, ChevronLeft, ChevronRight } from "lucide-react";
-import { newsItems } from "./NewsData";
-import { newsStyles } from "./NewsCard.styles";
+import { useRef, useState } from 'react';
+import { Box, Card, CardMedia, CardContent, Typography, Chip, IconButton } from '@mui/material';
+import { Calendar, MapPin, ChevronLeft, ChevronRight } from 'lucide-react';
+import { newsItems } from './NewsData';
+import { newsStyles } from './NewsCard.styles';
 
 export const NewsCard = () => {
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -25,12 +17,12 @@ export const NewsCard = () => {
     }
   };
 
-  const scroll = (direction: "left" | "right") => {
+  const scroll = (direction: 'left' | 'right') => {
     if (scrollRef.current) {
       const scrollAmount = 300;
       scrollRef.current.scrollBy({
-        left: direction === "left" ? -scrollAmount : scrollAmount,
-        behavior: "smooth",
+        left: direction === 'left' ? -scrollAmount : scrollAmount,
+        behavior: 'smooth',
       });
       setTimeout(checkScroll, 300);
     }
@@ -53,8 +45,8 @@ export const NewsCard = () => {
         {/* Left Scroll Button */}
         {canScrollLeft && (
           <IconButton
-            onClick={() => scroll("left")}
-            sx={newsStyles.scrollButton("left")}
+            onClick={() => scroll('left')}
+            sx={newsStyles.scrollButton('left')}
             aria-label="Scroll left"
           >
             <ChevronLeft size={16} />
@@ -77,11 +69,7 @@ export const NewsCard = () => {
                     alt={item.title}
                     sx={newsStyles.cardImage}
                   />
-                  <Chip
-                    label={item.badge}
-                    size="small"
-                    sx={newsStyles.badge(item.badgeColor)}
-                  />
+                  <Chip label={item.badge} size="small" sx={newsStyles.badge(item.badgeColor)} />
                 </Box>
 
                 {/* Card Content */}
@@ -99,13 +87,11 @@ export const NewsCard = () => {
                     <Box sx={newsStyles.dateLocationBox}>
                       <Box sx={newsStyles.infoItem}>
                         <Calendar size={12} />
-                        <Typography variant="caption">{item.date}</Typography>
+                        <Typography variant="caption"> {item.date} </Typography>
                       </Box>
                       <Box sx={newsStyles.infoItem}>
                         <MapPin size={12} />
-                        <Typography variant="caption">
-                          {item.location}
-                        </Typography>
+                        <Typography variant="caption">{item.location}</Typography>
                       </Box>
                     </Box>
                   )}
@@ -125,8 +111,8 @@ export const NewsCard = () => {
         {/* Right Scroll Button */}
         {canScrollRight && (
           <IconButton
-            onClick={() => scroll("right")}
-            sx={newsStyles.scrollButton("right")}
+            onClick={() => scroll('right')}
+            sx={newsStyles.scrollButton('right')}
             aria-label="Scroll right"
           >
             <ChevronRight size={16} />

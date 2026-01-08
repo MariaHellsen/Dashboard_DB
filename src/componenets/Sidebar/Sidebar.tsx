@@ -183,7 +183,7 @@ export const Sidebar = ({ mobileOpen = false, onMobileClose }: SidebarProps) => 
             sx={sidebarStyles.closeButton}
             aria-label="Close menu"
           >
-            <X size={15} />
+            <X size={16} />
           </IconButton>
         </Box>
         <SidebarContent />
