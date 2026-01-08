@@ -1,11 +1,14 @@
-import { useEffect, useState } from "react";
-import { Card, CardContent, Typography, Box, Button } from "@mui/material";
-import { useParams } from "react-router-dom";
-import type { Assignment, Invoice } from "../../models/dashboardSections";
-import type { DashboardStatistics, ChartDataPoint } from "../../models/Charts";
-import { onAssignmentCardStyles } from "./OnAssignment.styles";
-import { EarningsChart } from "./EarningsChart.tsx";
-import { HoursChart } from "./HoursChart.tsx";
+import { useEffect, useState } from 'react';
+import { Card, CardContent, Typography, Box, Button } from '@mui/material';
+import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
+import AccessTimeIcon from '@mui/icons-material/AccessTime';
+import BarChartIcon from '@mui/icons-material/BarChart';
+import { useParams } from 'react-router-dom';
+import type { Assignment, Invoice } from '../../models/dashboardSections';
+import type { DashboardStatistics, ChartDataPoint } from '../../models/Charts';
+import { onAssignmentCardStyles } from './OnAssignment.styles';
+import { EarningsChart } from './EarningsChart.tsx';
+import { HoursChart } from './HoursChart.tsx';
 
 interface ConsultantData {
   assignments: Assignment[];
@@ -14,9 +17,9 @@ interface ConsultantData {
 
 const formatMonthShort = (dateString: string): string => {
   const date = new Date(dateString);
-  return date.toLocaleDateString("en-US", {
-    month: "short",
-    year: "2-digit",
+  return date.toLocaleDateString('en-US', {
+    month: 'short',
+    year: '2-digit',
   });
 };
 
@@ -33,10 +36,10 @@ const calculateStatistics = (invoices: Invoice[]): DashboardStatistics => {
 };
 
 const generateChartData = (
-  invoices: Invoice[],
+  invoices: Invoice[]
 ): { earnings: ChartDataPoint[]; hours: ChartDataPoint[] } => {
   const sortedInvoices = [...invoices].sort(
-    (a, b) => new Date(a.month).getTime() - new Date(b.month).getTime(),
+    (a, b) => new Date(a.month).getTime() - new Date(b.month).getTime()
   );
 
   const earnings = sortedInvoices.map((inv) => ({
@@ -64,12 +67,10 @@ export const OnAssignmentCard = () => {
       }
 
       try {
-        const response = await fetch(
-          `http://localhost:3001/consultants/${consultantId}`,
-        );
+        const response = await fetch(`http://localhost:3001/consultants/${consultantId}`);
 
         if (!response.ok) {
-          throw new Error("Failed to fetch data");
+          throw new Error('Failed to fetch data');
         }
 
         const consultantData = await response.json();
@@ -100,35 +101,26 @@ export const OnAssignmentCard = () => {
         <Typography variant="subtitle1" fontWeight={600}>
           On Assignment
         </Typography>
-        <Typography
-          variant="body2"
-          color="text.secondary"
-          sx={onAssignmentCardStyles.subtitle}
-        >
+        <Typography variant="body2" color="text.secondary" sx={onAssignmentCardStyles.subtitle}>
           {assignment.client}
         </Typography>
 
         <Box sx={onAssignmentCardStyles.statsContainer}>
           <Box sx={onAssignmentCardStyles.statBox}>
-            <Typography sx={onAssignmentCardStyles.statValue}>
-              {statistics.monthsWorked}
-            </Typography>
-            <Typography sx={onAssignmentCardStyles.statLabel}>
-              Months
-            </Typography>
+            <CalendarMonthIcon sx={onAssignmentCardStyles.statIcon} />
+            <Typography sx={onAssignmentCardStyles.statLabel}>Total months</Typography>
+            <Typography sx={onAssignmentCardStyles.statValue}>{statistics.monthsWorked}</Typography>
           </Box>
           <Box sx={onAssignmentCardStyles.statBox}>
-            <Typography sx={onAssignmentCardStyles.statValue}>
-              {statistics.totalHours}h
-            </Typography>
-            <Typography sx={onAssignmentCardStyles.statLabel}>Hours</Typography>
+            <AccessTimeIcon sx={onAssignmentCardStyles.statIcon} />
+            <Typography sx={onAssignmentCardStyles.statLabel}>Time spent</Typography>
+            <Typography sx={onAssignmentCardStyles.statValue}>{statistics.totalHours}h</Typography>
           </Box>
           <Box sx={onAssignmentCardStyles.statBox}>
+            <BarChartIcon sx={onAssignmentCardStyles.statIcon} />
+            <Typography sx={onAssignmentCardStyles.statLabel}>Total revenue</Typography>
             <Typography sx={onAssignmentCardStyles.statValue}>
-              {Math.round(statistics.totalEarnings / 1000)}k
-            </Typography>
-            <Typography sx={onAssignmentCardStyles.statLabel}>
-              SEK Total
+              {Math.round(statistics.totalEarnings / 1000)}k SEK
             </Typography>
           </Box>
         </Box>

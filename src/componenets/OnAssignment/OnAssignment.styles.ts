@@ -36,6 +36,10 @@ export const onAssignmentCardStyles = {
     flex: 1,
     minWidth: 0,
     textAlign: 'center',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
     p: 1,
     borderRadius: 1,
     border: 1,
@@ -46,7 +50,7 @@ export const onAssignmentCardStyles = {
     },
   } as SxProps<Theme>,
 
-  // Stat value text
+  // Value text
   statValue: {
     fontWeight: 700,
     color: '#173a3e',
@@ -55,11 +59,19 @@ export const onAssignmentCardStyles = {
     lineHeight: 1.2,
   } as SxProps<Theme>,
 
-  // Stat label text
+  // Label text
   statLabel: {
     fontSize: '0.7rem',
     color: 'text.secondary',
     lineHeight: 1.2,
+    paddingBottom: 1,
+  } as SxProps<Theme>,
+
+  // Icon
+  statIcon: {
+    fontSize: 25,
+    mb: 1,
+    color: 'rgba(23, 58, 62, 1)',
   } as SxProps<Theme>,
 
   // Charts container
