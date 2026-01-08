@@ -1,11 +1,11 @@
-import type { SxProps, Theme } from "@mui/material";
+import type { SxProps, Theme } from '@mui/material';
 
 export const dashboardLayoutStyles = {
   // Root container
   root: {
-    minHeight: "100vh",
-    bgcolor: "rgb(241, 249, 250)",
-    display: "flex",
+    minHeight: '100vh',
+    bgcolor: 'rgb(241, 249, 250)',
+    display: 'flex',
   } as SxProps<Theme>,
 
   // Main content area
@@ -15,20 +15,20 @@ export const dashboardLayoutStyles = {
       ml: { xs: 0, md: `${drawerWidth}px` },
       p: 0,
       pt: { xs: 0, md: 2 },
-      maxWidth: "100%",
-      overflow: "hidden",
-      display: "flex",
-      flexDirection: "column",
-    }) as SxProps<Theme>,
+      maxWidth: '100%',
+      overflow: 'hidden',
+      display: 'flex',
+      flexDirection: 'column',
+    } as SxProps<Theme>),
 
   // Mobile header - sticky top bar (corporate standard)
   mobileHeader: {
-    position: "sticky",
+    position: 'sticky',
     top: 0,
     zIndex: 1000,
-    bgcolor: "#173a3e",
-    display: { xs: "flex", md: "none" },
-    alignItems: "center",
+    bgcolor: '#173a3e',
+    display: { xs: 'flex', md: 'none' },
+    alignItems: 'center',
     gap: 1.5,
     px: 2,
     py: 1,
@@ -37,9 +37,9 @@ export const dashboardLayoutStyles = {
 
   // Mobile header title
   mobileHeaderTitle: {
-    color: "#ffffff",
+    color: '#ffffff',
     fontWeight: 500,
-    fontSize: "1.3rem",
+    fontSize: '1.3rem',
   } as SxProps<Theme>,
 
   // Header box - welcome message
@@ -52,16 +52,16 @@ export const dashboardLayoutStyles = {
   // Title text
   title: {
     fontWeight: 600,
-    color: "text.primary",
-    fontSize: { xs: "1.1rem", sm: "1.25rem", md: "1.5rem" },
+    color: 'text.primary',
+    fontSize: { xs: '1.1rem', sm: '1.25rem', md: '1.5rem' },
     lineHeight: 1.3,
   } as SxProps<Theme>,
 
   // User name highlight
   name: {
-    color: "#FDA732",
+    color: '#FDA732',
     fontWeight: 700,
-    fontSize: "inherit",
+    fontSize: 'inherit',
   } as SxProps<Theme>,
 
   // Content wrapper
@@ -77,18 +77,21 @@ export const dashboardLayoutStyles = {
 
   // News section
   newsSection: {
-    mt: "auto",
+    mt: 'auto',
     mb: 2,
   } as SxProps<Theme>,
 
   // Cards grid - responsive layout
   cardsGrid: {
-    display: "grid",
+    display: 'grid',
     gridTemplateColumns: {
-      xs: "1fr",
-      sm: "repeat(auto-fit, minmax(280px, 1fr))",
+      xs: '1fr',
+      sm: 'repeat(auto-fit, minmax(280px, 1fr))',
     },
-    gridAutoRows: "1fr",
+    gridAutoRows: {
+      xs: 'auto',
+      sm: '1fr',
+    },
     gap: { xs: 1.5, md: 2 },
     mb: 3,
   } as SxProps<Theme>,
