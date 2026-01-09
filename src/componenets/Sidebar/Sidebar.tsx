@@ -70,7 +70,7 @@ const SidebarContent = () => {
       }
 
       try {
-        const response = await fetch(`http://localhost:3001/consultants/${consultantId}`);
+        const response = await fetch(`${import.meta.env.VITE_API_URL}/consultants/${consultantId}`);
 
         if (!response.ok) {
           throw new Error('Failed to fetch user');

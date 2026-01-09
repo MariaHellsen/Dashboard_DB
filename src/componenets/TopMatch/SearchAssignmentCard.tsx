@@ -1,16 +1,16 @@
-import { useEffect, useState } from "react";
-import { Card, CardContent, Typography, Box, Button } from "@mui/material";
-import { Clock, Calendar, MapPin } from "lucide-react";
-import { useParams } from "react-router-dom";
-import type { TopMatch } from "../../models";
-import { searchAssignmentStyles } from "../SearchAssignment/SearchAssignmentCard.styles.ts";
+import { useEffect, useState } from 'react';
+import { Card, CardContent, Typography, Box, Button } from '@mui/material';
+import { Clock, Calendar, MapPin } from 'lucide-react';
+import { useParams } from 'react-router-dom';
+import type { TopMatch } from '../../models';
+import { searchAssignmentStyles } from '../SearchAssignment/SearchAssignmentCard.styles.ts';
 
 const formatDate = (dateString: string): string => {
   const date = new Date(dateString);
-  return date.toLocaleDateString("en-US", {
-    year: "numeric",
-    month: "short",
-    day: "numeric",
+  return date.toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'short',
+    day: 'numeric',
   });
 };
 
@@ -26,12 +26,10 @@ export const SearchAssignmentCard = () => {
       }
 
       try {
-        const response = await fetch(
-          `http://localhost:3001/consultants/${consultantId}`,
-        );
+        const response = await fetch(`${import.meta.env.VITE_API_URL}/consultants/${consultantId}`);
 
         if (!response.ok) {
-          throw new Error("Failed to fetch top matches");
+          throw new Error('Failed to fetch top matches');
         }
 
         const data = await response.json();
@@ -50,11 +48,7 @@ export const SearchAssignmentCard = () => {
         <Typography variant="subtitle1" fontWeight={600}>
           Search Assignment
         </Typography>
-        <Typography
-          variant="body2"
-          color="text.secondary"
-          sx={searchAssignmentStyles.subtitle}
-        >
+        <Typography variant="body2" color="text.secondary" sx={searchAssignmentStyles.subtitle}>
           Top matches
         </Typography>
 
@@ -84,9 +78,7 @@ export const SearchAssignmentCard = () => {
                 </Box>
                 <Box sx={searchAssignmentStyles.detailRow}>
                   <MapPin size={12} />
-                  <Typography variant="caption">
-                    {assignment.location}
-                  </Typography>
+                  <Typography variant="caption">{assignment.location}</Typography>
                 </Box>
               </Box>
             </Box>

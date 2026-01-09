@@ -1,10 +1,10 @@
-import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import type { Consultant } from "../../models/Consultant";
-import ConsultantCard from "./ConsultantCard";
-import logo from "../../assets/logo_full.svg";
-import heroImage from "../../assets/hero-consultants.jpg";
-import "./ConsultantsListPage.scss";
+import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import type { Consultant } from '../../models/Consultant';
+import ConsultantCard from './ConsultantCard';
+import logo from '../../assets/logo_full.svg';
+import heroImage from '../../assets/hero-consultants.jpg';
+import './ConsultantsListPage.scss';
 
 export const ConsultantsListPage = () => {
   const navigate = useNavigate();
@@ -17,16 +17,16 @@ export const ConsultantsListPage = () => {
     const fetchConsultants = async () => {
       try {
         setLoading(true);
-        const response = await fetch("http://localhost:3001/consultants");
+        const response = await fetch(`${import.meta.env.VITE_API_URL}/consultants`);
 
         if (!response.ok) {
-          throw new Error("Failed to fetch consultants");
+          throw new Error('Failed to fetch consultants');
         }
 
         const data = await response.json();
         setConsultants(data);
       } catch (err) {
-        setError(err instanceof Error ? err.message : "Something went wrong");
+        setError(err instanceof Error ? err.message : 'Something went wrong');
       } finally {
         setLoading(false);
       }
@@ -59,11 +59,7 @@ export const ConsultantsListPage = () => {
     <div className="consultants-page">
       <div className="hero-section">
         <img src={logo} alt="DevelopersBay Logo" className="logo" />
-        <img
-          src={heroImage}
-          alt="DevelopersBay Community"
-          className="hero-image"
-        />
+        <img src={heroImage} alt="DevelopersBay Community" className="hero-image" />
       </div>
 
       <div className="content">

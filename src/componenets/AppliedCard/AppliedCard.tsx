@@ -1,16 +1,16 @@
-import { useEffect, useState } from "react";
-import { Card, CardContent, Typography, Box, Chip } from "@mui/material";
-import { Calendar, MapPin } from "lucide-react";
-import { useParams } from "react-router-dom";
-import type { Application } from "../../models";
-import { appliedCardStyles } from "./AppliedCard.styles";
+import { useEffect, useState } from 'react';
+import { Card, CardContent, Typography, Box, Chip } from '@mui/material';
+import { Calendar, MapPin } from 'lucide-react';
+import { useParams } from 'react-router-dom';
+import type { Application } from '../../models';
+import { appliedCardStyles } from './AppliedCard.styles';
 
 const formatDate = (dateString: string): string => {
   const date = new Date(dateString);
-  return date.toLocaleDateString("en-US", {
-    year: "numeric",
-    month: "short",
-    day: "numeric",
+  return date.toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'short',
+    day: 'numeric',
   });
 };
 
@@ -26,12 +26,10 @@ export const AppliedCard = () => {
       }
 
       try {
-        const response = await fetch(
-          `http://localhost:3001/consultants/${consultantId}`,
-        );
+        const response = await fetch(`${import.meta.env.VITE_API_URL}/consultants/${consultantId}`);
 
         if (!response.ok) {
-          throw new Error("Failed to fetch applications");
+          throw new Error('Failed to fetch applications');
         }
 
         const data = await response.json();
@@ -70,22 +68,14 @@ export const AppliedCard = () => {
               <Box sx={appliedCardStyles.detailsContainer}>
                 <Box sx={appliedCardStyles.detailRow}>
                   <Calendar size={12} />
-                  <Typography variant="caption">
-                    Starts: {formatDate(app.startDate)}
-                  </Typography>
+                  <Typography variant="caption">Starts: {formatDate(app.startDate)}</Typography>
                 </Box>
                 <Box sx={appliedCardStyles.detailRow}>
                   <MapPin size={12} />
-                  <Typography variant="caption">
-                    {app.remote ? "Remote" : app.location}
-                  </Typography>
+                  <Typography variant="caption">{app.remote ? 'Remote' : app.location}</Typography>
                 </Box>
               </Box>
-              <Chip
-                label={app.result}
-                size="small"
-                sx={appliedCardStyles.statusChip}
-              />
+              <Chip label={app.result} size="small" sx={appliedCardStyles.statusChip} />
             </Box>
           ))}
         </Box>
