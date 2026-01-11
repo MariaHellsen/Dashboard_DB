@@ -131,7 +131,7 @@ $spacing-unit: 8px;
 
 .consultants-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  grid-template-columns: repeat(4, 1fr);
   gap: $spacing-unit * 3;
 
   @media (max-width: 768px) {
@@ -206,7 +206,7 @@ $spacing-unit: 8px;
 
     &.status-not-applied {
       background-color: #f5f5f5;
-      color: #757575;
+      color: #605e5e;
     }
 
     &.status-applied {
@@ -215,7 +215,7 @@ $spacing-unit: 8px;
     }
 
     &.status-on-assignment {
-      background-color: #8debd2;
+      background-color: #fda732;
       color: #173a3e;
     }
 
