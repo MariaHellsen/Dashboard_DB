@@ -1,24 +1,21 @@
-import { Outlet } from "react-router-dom";
-import { useState } from "react";
-import { Box, useMediaQuery, useTheme, Typography } from "@mui/material";
-import { dashboardLayoutStyles } from "./DashboardLayout.styles";
-import {
-  Sidebar,
-  MobileMenuButton,
-} from "../../../componenets/Sidebar/Sidebar";
-import { NewsCard } from "../../../componenets/NewsCard/NewsCard";
-import { AvailabilityCard } from "../../../componenets/Availiability/Availability";
-import { SearchAssignmentCard } from "../../../componenets/SearchAssignment/SearchAssignmentCard";
-import { useConsultant } from "../../../hooks/useConsultant";
-import { AppliedCard } from "../../../componenets/AppliedCard/AppliedCard";
-import { OnAssignmentCard } from "../../../componenets/OnAssignment/OnAssignment";
+import { Outlet } from 'react-router-dom';
+import { useState } from 'react';
+import { Box, useMediaQuery, useTheme, Typography } from '@mui/material';
+import { dashboardLayoutStyles } from './DashboardLayout.styles';
+import { Sidebar, MobileMenuButton } from '../../../componenets/Sidebar/Sidebar';
+import { NewsCard } from '../../../componenets/NewsCard/NewsCard';
+import { AvailabilityCard } from '../../../componenets/Availiability/Availability';
+import { SearchAssignmentCard } from '../../../componenets/SearchAssignment/SearchAssignmentCard';
+import { useConsultant } from '../../../hooks/useConsultant';
+import { AppliedCard } from '../../../componenets/AppliedCard/AppliedCard';
+import { OnAssignmentCard } from '../../../componenets/OnAssignment/OnAssignment';
 
 const DRAWER_WIDTH = 250;
 
 export const DashboardLayout = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("md"));
+  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
   const { getFirstName, loading } = useConsultant();
 
   const handleToggleMobile = () => setMobileOpen((s) => !s);
@@ -34,23 +31,30 @@ export const DashboardLayout = () => {
         {isMobile && (
           <Box sx={dashboardLayoutStyles.mobileHeader}>
             <MobileMenuButton onClick={handleToggleMobile} />
-            <Typography sx={dashboardLayoutStyles.mobileHeaderTitle}>
-              Dashboard
-            </Typography>
+            <Typography sx={dashboardLayoutStyles.mobileHeaderTitle}>Dashboard</Typography>
           </Box>
         )}
 
-        {/* Desktop Header */}
-        {!isMobile && (
-          <Box sx={dashboardLayoutStyles.headerBox}>
-            <Typography variant="h5" sx={dashboardLayoutStyles.title}>
-              Welcome to your consultant dashboard,{" "}
-              <Typography component="span" sx={dashboardLayoutStyles.name}>
-                {loading ? "..." : `${getFirstName()}!`}
-              </Typography>
-            </Typography>
-          </Box>
-        )}
+        {/* Header - Desktop and Mobile */}
+        <Box sx={dashboardLayoutStyles.headerBox}>
+          <Typography variant="h5" sx={dashboardLayoutStyles.title}>
+            {isMobile ? (
+              <>
+                Welcome{' '}
+                <Typography component="span" sx={dashboardLayoutStyles.name}>
+                  {loading ? '...' : `${getFirstName()}!`}
+                </Typography>
+              </>
+            ) : (
+              <>
+                Welcome to your consultant dashboard,{' '}
+                <Typography component="span" sx={dashboardLayoutStyles.name}>
+                  {loading ? '...' : `${getFirstName()}!`}
+                </Typography>
+              </>
+            )}
+          </Typography>
+        </Box>
 
         {/* Route Content */}
         <Box sx={dashboardLayoutStyles.contentWrapper}>

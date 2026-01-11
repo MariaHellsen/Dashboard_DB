@@ -63,7 +63,39 @@ export const ConsultantsListPage = () => {
       </div>
 
       <div className="content">
-        <h2 className="title">Consultants</h2>
+        <div className="info-section">
+          <h2 className="info-section__title">Consultant Dashboard MVP</h2>
+          <p className="info-section__description">
+            This dashboard adapts dynamically to a consultant's current status. Depending on whether
+            a user is active, searching, or on assignment, the layout displays a tailored
+            combination of the following sections:
+          </p>
+          <ul className="info-section__features">
+            <li>
+              <strong>Availability:</strong> Current status settings (maintained from the existing
+              platform).
+            </li>
+            <li>
+              <strong>Search Assignments:</strong> Top matches with matching logic and links to the
+              full list.
+            </li>
+            <li>
+              <strong>Applied Assignments:</strong> A clear overview of ongoing applications and
+              their status.
+            </li>
+            <li>
+              <strong>On Assignment:</strong> Real-time statistics, time reports, and contract
+              tracking.
+            </li>
+            <li>
+              <strong>DevelopersBay News:</strong> Latest corporate updates and events.
+            </li>
+          </ul>
+          <p className="info-section__cta">
+            Select a consultant profile below to preview their unique dashboard view based on their
+            specific availability and status.
+          </p>
+        </div>
 
         <div className="consultants-grid">
           {consultants.map((consultant) => (

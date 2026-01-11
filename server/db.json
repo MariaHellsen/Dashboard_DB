@@ -93,66 +93,7 @@
       ],
       "invoices": []
     },
-    {
-      "id": "c3",
-      "name": "Elin",
-      "surname": "Svensson",
-      "email": "elin.svensson@gmail.com",
-      "role": "Data Engineer",
-      "status": "applied",
-      "skills": ["Python", "AWS", "Azure"],
-      "topMatches": [
-        {
-          "id": "v-e1",
-          "title": "Data Engineer, Vattenfall",
-          "publishedDate": "2025-12-03T00:00:00Z",
-          "startDate": "2026-01-01T00:00:00Z",
-          "location": "Remote"
-        },
-        {
-          "id": "v-e2",
-          "title": "Analytics Engineer, AstraZeneca",
-          "publishedDate": "2025-12-10T00:00:00Z",
-          "startDate": "2026-02-01T00:00:00Z",
-          "location": "Stockholm"
-        },
-        {
-          "id": "v-e3",
-          "title": "Cloud Data Engineer, Sandvik",
-          "publishedDate": "2025-12-20T00:00:00Z",
-          "startDate": "2026-03-01T00:00:00Z",
-          "location": "Malmö"
-        }
-      ],
-      "assignments": [],
-      "applications": [
-        {
-          "id": "app-e1",
-          "title": "Data Engineer",
-          "result": "Showed interest",
-          "startDate": "2026-01-01T00:00:00Z",
-          "location": "Remote",
-          "remote": true
-        },
-        {
-          "id": "app-e2",
-          "title": "Senior Data Engineer",
-          "result": "No feedback from client",
-          "startDate": "2026-02-01T00:00:00Z",
-          "location": "Stockholm",
-          "remote": true
-        },
-        {
-          "id": "app-e3",
-          "title": "Cloud Data Engineer",
-          "result": "Interview booked",
-          "startDate": "2026-03-01T00:00:00Z",
-          "location": "Stockholm",
-          "remote": false
-        }
-      ],
-      "invoices": []
-    },
+
     {
       "id": "c4",
       "name": "Milos",
@@ -289,7 +230,7 @@
       "surname": "Frost",
       "email": "ava.frost@gmail.com",
       "role": "Enterprise Architect",
-      "status": "on-assignment",
+      "status": "on-assignment - no-applications",
       "topMatches": [
         {
           "id": "v-fa1",
