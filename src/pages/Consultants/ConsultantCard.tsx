@@ -16,7 +16,7 @@ export const ConsultantCard = ({ consultant, onClick }: ConsultantCardProps) => 
       'not-applied': 'Not Applied',
       applied: 'Applied',
       'on-assignment': 'On Assignment',
-      'on-assignment-with-applications': 'On Assignment',
+      'on-assignment-with-applications': 'On Assignment, Applied',
     };
     return statusMap[status];
   };
