@@ -76,8 +76,7 @@ export const ConsultantsListPage = () => {
               platform).
             </li>
             <li>
-              <strong>Search Assignments:</strong> Top matches with matching logic and links to the
-              full list.
+              <strong>Search Assignments:</strong> Top matches with link to the full list.
             </li>
             <li>
               <strong>Applied Assignments:</strong> A clear overview of ongoing applications and
